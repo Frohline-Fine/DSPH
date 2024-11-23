@@ -14,7 +14,8 @@ data = []
 for page_layout in extract_pages(pdf_file):
     for element in page_layout:
         if isinstance(element, LTTextContainer):
-            for line in element.get_text().split('\n'):
-                print(line)
-            # print(element.get_text())
+            print(element.get_text())
+
+            # for line in element.get_text().split('\n'):
+            #     print(line)
 
