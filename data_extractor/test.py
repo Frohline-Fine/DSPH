@@ -42,6 +42,7 @@ def divide(path_to_csv: Path) -> pd.DataFrame:
         else:
             exercise.append(element)
 
+    list_of_problems.append({'Exercise': exercise})
     list_of_problems.pop(0)
     df_out = pd.DataFrame(list_of_problems)
     return df_out
@@ -49,4 +50,4 @@ def divide(path_to_csv: Path) -> pd.DataFrame:
 
 if __name__ == '__main__':
     df_divided = divide(input_file)
-    df_divided.to_csv('data/divided.csv')
+    df_divided.to_csv('data/divided.csv', encoding='utf-8', index=False)
