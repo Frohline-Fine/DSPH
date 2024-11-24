@@ -25,7 +25,7 @@ def conquer(df: pd.DataFrame) -> pd.DataFrame:
         return ans, e
 
     def split_element(seperator, string):
-        exercise = []
+        exercise = {'question': [], 'answer': [], 'explanation': []}
         q, a = get_question(seperator, string)
         # print(q,a)
         # if re.findall("\\?", q):
@@ -36,7 +36,9 @@ def conquer(df: pd.DataFrame) -> pd.DataFrame:
 
         an, ex = get_explanation(a)
 
-        exercise.append({'question': q, 'answer': an, 'explanation': ex})
+        exercise['question'].append(q)
+        exercise['answer'].append(an)
+        exercise['explanation'].append(ex)
 
         return exercise
 
@@ -58,7 +60,13 @@ def conquer(df: pd.DataFrame) -> pd.DataFrame:
         elif re.findall('Falsch', str_element1):
             problem = split_element('Falsch', str_element1)
 
-        exercises.append({'name': name, 'problem': problem})
+        print(type(problem))
+        print(len(problem))
+        if len(problem) > 0:
+            exercises.append({'name': name, 'question': problem['question'],
+                              'answer': problem['answer'],
+                              'explanation': problem['explanation']})
+        # exercises.append({'name': name, 'problem': problem})
         i += 1
 
     df = pd.DataFrame(exercises)
