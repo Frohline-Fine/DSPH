@@ -6,7 +6,7 @@ from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import PDFPageAggregator
 
 # Open the PDF file
-with open('datei.pdf', 'rb') as pdf_file:
+with open('data/datei.pdf', 'rb') as pdf_file:
     # Create a PDFParser
     pdf_parser = PDFParser(pdf_file)
 
