@@ -7,10 +7,7 @@ i_file = Path('data/divided.csv')
 
 def conquer(df: pd.DataFrame) -> pd.DataFrame:
     exercises = []
-    # question = []
-    # answer = []
     i = 0
-    test = []
 
     def get_question(seperator, string):
         words = string.split(seperator)
@@ -25,14 +22,16 @@ def conquer(df: pd.DataFrame) -> pd.DataFrame:
         return ans, e
 
     def split_element(seperator, string):
-        exercise = {'question': [], 'answer': [], 'explanation': []}
+        exercise = {'question': [],'options': [], 'answer': [], 'explanation': []}
         q, a = get_question(seperator, string)
-        # print(q,a)
-        # if re.findall("\\?", q):
-        #     s_question = q.split("\\?")
-        #     q = f"{s_question[0]}?"
-        #     o = s_question[1]
-        #     exercise.append({'option': o, })
+
+        # todo: seperate options from question
+        if re.findall("\\?", q):
+            s_question = q.split("\\?")
+            q = f"{s_question[0]}?"
+            if len(s_question) > 1:
+                o = s_question[1]
+                exercise['options'].append(o)
 
         an, ex = get_explanation(a)
 
@@ -60,13 +59,12 @@ def conquer(df: pd.DataFrame) -> pd.DataFrame:
         elif re.findall('Falsch', str_element1):
             problem = split_element('Falsch', str_element1)
 
-        print(type(problem))
-        print(len(problem))
         if len(problem) > 0:
-            exercises.append({'name': name, 'question': problem['question'],
+            exercises.append({'name': name,
+                              'question': problem['question'],
+                              'options': problem['options'],
                               'answer': problem['answer'],
                               'explanation': problem['explanation']})
-        # exercises.append({'name': name, 'problem': problem})
         i += 1
 
     df = pd.DataFrame(exercises)
