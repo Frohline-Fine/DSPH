@@ -1,22 +1,18 @@
 import re
+from operator import index
+
 import pandas as pd
 from pathlib import Path
 
-from numpy import number
-
-input_file = Path('data/data.csv')
+input_file = Path('data/cleaned_datei.csv')
 problems = Path('data/problems.csv')
-# questions_file = 'data/questions.csv'
-# answers_file = 'data/answers.csv'
 
 pattern = "Korrekte Antwort"
 questions = []
 answers = []
 
 
-# df = pd.read_csv(input_file, encoding='utf-8', index_col=False)
-
-def check_number(element):
+def check_number(element) -> int:
     if element[0].isdigit():
         if element[1].isdigit():
             if element[2].isdigit():
@@ -25,54 +21,32 @@ def check_number(element):
         return int(element[0])
 
 
-def divide(path_to_csv: Path):
+def divide(path_to_csv: Path) -> pd.DataFrame:
     list_of_problems = []
     exercise = []
     next_nr = 1
 
-    df = pd.read_csv(path_to_csv, encoding='utf-8', index_col=False)
+    df_in = pd.read_csv(path_to_csv, encoding='utf-8', index_col=False)
 
-    for element in df['Question']:
+    for element in df_in['Question']:
         e_number = check_number(element)
-        print(e_number)
         if e_number is None:
             exercise.append(element)
-            print("e_number none")
         elif e_number == next_nr:
-            print("e_number == next_nr")
             if len(exercise) != 0:
-                list_of_problems.append(exercise)
+                x = {'Exercise': exercise}
+                list_of_problems.append(x)
                 exercise = []
-                print("problems.append & exercise.clear")
             exercise.append(element)
             next_nr += 1
-            print(next_nr)
         else:
             exercise.append(element)
-            print("else")
 
-    return list_of_problems
+    list_of_problems.pop(0)
+    df_out = pd.DataFrame(list_of_problems)
+    return df_out
 
 
 if __name__ == '__main__':
-    data_out = divide(input_file)
-
-    data_out = pd.DataFrame(data_out)
-    print(data_out)
-    data_out.to_csv('data/data_out.csv')
-
-    # elif element.startswith('Korrekte Antwort'):
-    # answers.append(element)
-    # elif element.startswith('Richtige Antwort'):
-    #     answers.append(element)
-    # elif element.startswith('Richtig'):
-    #     answers.append(element)
-    # elif element.startswith('Falsch'):
-    #     answers.append(element)
-
-# print(len(answers))
-# print(len(questions))
-# question_df = pd.DataFrame(questions)
-# answer_df = pd.DataFrame(answers)
-# question_df.to_csv(questions_file)
-# answer_df.to_csv(answers_file)
+    df_divided = divide(input_file)
+    df_divided.to_csv('data/divided.csv')

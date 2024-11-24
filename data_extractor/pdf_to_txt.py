@@ -16,9 +16,11 @@ lines = [line.strip() for line in text.splitlines() if line.strip()]
 # Join the non-empty lines back together with newline characters
 cleaned_text = '\n'.join(lines)
 
-with open('data/cleaned_datei.txt', 'w', encoding='utf-8') as f:
-    for line in cleaned_text.splitlines():
-        f.write(line + '\n')
+tlist = []
+for line in cleaned_text.splitlines():
+    tlist.append(line)
 
-# # Print the cleaned text
-# print(cleaned_text)
+x = {'Question': tlist}
+df = pd.DataFrame(x)
+df.to_csv('data/cleaned_datei.csv', index=False)
+
