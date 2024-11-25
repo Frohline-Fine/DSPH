@@ -1,15 +1,7 @@
-import re
-from operator import index
-
+"""
+This Class separates the exercises and gets rid of unimportant text
+"""
 import pandas as pd
-from pathlib import Path
-
-input_file = Path('data/cleaned_datei.csv')
-problems = Path('data/problems.csv')
-
-pattern = "Korrekte Antwort"
-questions = []
-answers = []
 
 
 def check_number(element) -> int:
@@ -21,12 +13,10 @@ def check_number(element) -> int:
         return int(element[0])
 
 
-def divide(path_to_csv: Path) -> pd.DataFrame:
+def separate(df_in: pd.DataFrame) -> pd.DataFrame:
     list_of_problems = []
     exercise = []
     next_nr = 1
-
-    df_in = pd.read_csv(path_to_csv, encoding='utf-8', index_col=False)
 
     for element in df_in['Question']:
         e_number = check_number(element)
@@ -45,9 +35,7 @@ def divide(path_to_csv: Path) -> pd.DataFrame:
     list_of_problems.append({'Exercise': exercise})
     list_of_problems.pop(0)
     df_out = pd.DataFrame(list_of_problems)
+
+    print("exercises separated")
+
     return df_out
-
-
-if __name__ == '__main__':
-    df_divided = divide(input_file)
-    df_divided.to_csv('data/divided.csv', encoding='utf-8', index=False)

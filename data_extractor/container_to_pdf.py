@@ -1,3 +1,8 @@
+"""
+todo: deprecated! to be deleted
+
+This class extracts text from a pdf and transfers it to a csv file
+"""
 # imports
 import re
 import pandas as pd

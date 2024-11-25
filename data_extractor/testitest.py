@@ -1,3 +1,7 @@
+"""
+todo: to be deleted
+"""
+
 # Import required classes from the pdfminer.six library
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument

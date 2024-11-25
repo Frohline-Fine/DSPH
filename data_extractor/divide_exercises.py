@@ -1,11 +1,11 @@
+"""
+This class divides the exercises into individual parts
+"""
 import re
 import pandas as pd
-from pathlib import Path
-
-i_file = Path('data/divided.csv')
 
 
-def conquer(df: pd.DataFrame) -> pd.DataFrame:
+def divide(df_in: pd.DataFrame) -> pd.DataFrame:
     exercises = []
     i = 0
 
@@ -22,7 +22,7 @@ def conquer(df: pd.DataFrame) -> pd.DataFrame:
         return ans, e
 
     def split_element(seperator, string):
-        exercise = {'question': [],'options': [], 'answer': [], 'explanation': []}
+        exercise = {'question': [], 'options': [], 'answer': [], 'explanation': []}
         q, a = get_question(seperator, string)
 
         # todo: seperate options from question
@@ -41,7 +41,7 @@ def conquer(df: pd.DataFrame) -> pd.DataFrame:
 
         return exercise
 
-    for element in df['Exercise']:
+    for element in df_in['Exercise']:
         name = f"Exercise {i + 1}"
         problem = []
 
@@ -67,11 +67,8 @@ def conquer(df: pd.DataFrame) -> pd.DataFrame:
                               'explanation': problem['explanation']})
         i += 1
 
-    df = pd.DataFrame(exercises)
-    return df
+    df_out = pd.DataFrame(exercises)
 
+    print("exercises divided")
 
-if __name__ == '__main__':
-    df_in = pd.read_csv(i_file, encoding='utf-8', index_col=False)
-    df_out = conquer(df_in)
-    df_out.to_csv('data/conquer.csv')
+    return df_out
