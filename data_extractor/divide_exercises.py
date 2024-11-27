@@ -15,6 +15,11 @@ def divide(df_in: pd.DataFrame) -> pd.DataFrame:
         ans = f"{seperator}{words[1]}"
         return qu, ans
 
+    # todo
+    def get_options():
+        options = []
+        pass
+
     def get_explanation(string):
         words = string.split('Erklärung')
         ans = words[0]
