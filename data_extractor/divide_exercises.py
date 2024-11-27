@@ -15,11 +15,6 @@ def divide(df_in: pd.DataFrame) -> pd.DataFrame:
         ans = f"{seperator}{words[1]}"
         return qu, ans
 
-    # todo
-    def get_options():
-        options = []
-        pass
-
     def get_explanation(string):
         words = string.split('Erklärung')
         ans = words[0]
@@ -27,17 +22,8 @@ def divide(df_in: pd.DataFrame) -> pd.DataFrame:
         return ans, e
 
     def split_element(seperator, string):
-        exercise = {'question': [], 'options': [], 'answer': [], 'explanation': []}
+        exercise = {'question': [], 'answer': [], 'explanation': []}
         q, a = get_question(seperator, string)
-
-        # todo: seperate options from question
-        if re.findall("\\?", q):
-            s_question = q.split("\\?")
-            q = f"{s_question[0]}?"
-            if len(s_question) > 1:
-                o = s_question[1]
-                exercise['options'].append(o)
-
         an, ex = get_explanation(a)
 
         exercise['question'].append(q)
@@ -67,7 +53,6 @@ def divide(df_in: pd.DataFrame) -> pd.DataFrame:
         if len(problem) > 0:
             exercises.append({'name': name,
                               'question': problem['question'],
-                              'options': problem['options'],
                               'answer': problem['answer'],
                               'explanation': problem['explanation']})
         i += 1
