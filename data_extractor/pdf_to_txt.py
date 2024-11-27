@@ -1,4 +1,5 @@
 """
+todo deprecated
 This class extracts text from a pdf and transfers it to a csv file
 but without unnecessary blank lines
 """
