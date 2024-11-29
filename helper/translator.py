@@ -1,5 +1,5 @@
 """
-Translates text into english
+Translate text into english
 """
 from googletrans import Translator
 

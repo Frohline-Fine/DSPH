@@ -4,6 +4,7 @@ This Class separates the exercises and gets rid of unimportant text
 import pandas as pd
 
 
+# determine exercise number
 def check_number(element) -> int:
     if element[0].isdigit():
         if element[1].isdigit():
@@ -13,6 +14,7 @@ def check_number(element) -> int:
         return int(element[0])
 
 
+# separate exercises from each other
 def separate(df_in: pd.DataFrame) -> pd.DataFrame:
     list_of_problems = []
     exercise = []

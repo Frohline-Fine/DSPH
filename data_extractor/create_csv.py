@@ -1,15 +1,17 @@
 """
-This class extracts text from a pdf and transfers it to a csv file
+This class extracts text from source file and transfers it to csv file
 """
 # imports
 import pandas as pd
 from pdfminer.high_level import extract_pages, extract_text
 from pdfminer.layout import LTTextContainer
 
+from helper.paths import src_file
 
-def extract_elements(pdf_file):
+
+def create_csv():
     data = []
-    for page_layout in extract_pages(pdf_file):
+    for page_layout in extract_pages(src_file):
         for element in page_layout:
             if isinstance(element, LTTextContainer):
                 data.append([element.get_text()])

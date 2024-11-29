@@ -7,12 +7,14 @@ from pathlib import Path
 import pandas as pd
 
 
+# get rid of unwanted characters
 def cutter(string):
     cut = string.strip(r'["').strip("['").strip(r'"]')
     return cut.replace(r"\\n", "<br>")
 
 
-def get_exercise(df: pd.DataFrame):
+# provide cleaned strings for QLabelWidgets
+def clean_exercise(df: pd.DataFrame):
     e = df.sample()
     i = e.index[0]
 
