@@ -1,10 +1,10 @@
 import sys
-from pathlib import Path
 
 from PyQt6.QtGui import QFont
 
-from helper.get_exercise import get_exercise
+from helper.clean_exercise import clean_exercise
 from helper.translator import translate
+from helper.paths import csv_file
 
 import pandas as pd
 from PyQt6.QtCore import Qt, QSize
@@ -12,16 +12,14 @@ from PyQt6.QtWidgets import (
     QDialog,
     QApplication, QLabel, QPushButton, QGridLayout, )
 
-path_to_csv = Path(__file__).parent.parent / 'data_extractor' / 'data' / 'test.csv'
-
 
 class TrainDialog(QDialog):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Aufgabe")
         self.resize(500, 500)
-        self.dataframe = pd.read_csv(path_to_csv)
-        self.exercise = get_exercise(self.dataframe)
+        self.dataframe = pd.read_csv(csv_file)
+        self.exercise = clean_exercise(self.dataframe)
 
         self.button_answer = QPushButton("Zeige Antwort")
         self.button_answer.setIconSize(QSize(16, 16))
@@ -75,7 +73,7 @@ class TrainDialog(QDialog):
         self.label_explanation_e.setHidden(True)
         self.button_answer.setHidden(False)
 
-        self.exercise = get_exercise(self.dataframe)
+        self.exercise = clean_exercise(self.dataframe)
         self.label_question.setText(self.exercise[0])
         self.label_question_e.setText(translate(self.exercise[0]))
         self.label_answer.setText(self.exercise[1])

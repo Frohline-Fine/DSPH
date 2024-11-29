@@ -1,4 +1,6 @@
 """
+todo: deprecated (to be deleted?)
+
 This class separates the problem from options
 """
 import pathlib
