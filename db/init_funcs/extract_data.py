@@ -9,7 +9,7 @@ from pdfminer.layout import LTTextContainer
 from helper.paths import src_file
 
 
-def create_csv():
+def extract_data():
     data = []
     for page_layout in extract_pages(src_file):
         for element in page_layout:

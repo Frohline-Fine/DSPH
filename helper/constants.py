@@ -2,8 +2,12 @@
 Constants library
 """
 
-# divide_exercises.py
+# db
+DB_NAME = 'pruefungshelfer'
+COLLECTION = 'exercises'
 
+
+# divide_exercise.py
 CORRECT = 'Korrekte Antwort'
 R_ANSWERS = 'Richtige Antworten'
 R_ANSWER = 'Richtige Antwort'

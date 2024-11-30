@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 # imports
-from pathlib import Path
-from init_db.create_csv import create_csv
-from init_db.separate_exercises import separate
-from init_db.divide_exercises import divide
+import sys
 
-from helper.paths import csv_file
+from PyQt6.QtWidgets import QApplication
+
+from db.init_db import client, init_db
+from gui.test_gui import TrainDialog
+from helper.constants import DB_NAME
 
 if __name__ == '__main__':
-    df_page = create_csv()
-    df_separated = separate(df_page)
-    df_divided = divide(df_separated)
-    df_divided.to_csv(csv_file, encoding='utf-8', index=False)
+    if DB_NAME not in client.list_database_names():
+        print("Datenbank wird erstellt")
+        init_db()
+
+    app = QApplication(sys.argv)
+    main_dialog = TrainDialog()
+    main_dialog.show()
+    sys.exit(app.exec())

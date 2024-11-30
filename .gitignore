@@ -1,2 +1,6 @@
 /db/data/
-/db/
+/db/source/
+/db/__pycache__/
+/db/init_funcs/__pycache__/
+/gui/__pycache__/
+/helper/__pycache__/
