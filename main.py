@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # imports
 from pathlib import Path
-from data_extractor.create_csv import create_csv
-from data_extractor.separate_exercises import separate
-from data_extractor.divide_exercises import divide
+from init_db.create_csv import create_csv
+from init_db.separate_exercises import separate
+from init_db.divide_exercises import divide
 
 from helper.paths import csv_file
 
