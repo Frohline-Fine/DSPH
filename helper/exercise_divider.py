@@ -1,6 +1,17 @@
 """
-Helper functions for divide_exercises.py
+Helper functions for divide_exercise.py
 """
+
+
+def replace_chars(str_element):
+    str_element1 = str_element.replace("', '", " ")
+    str_element2 = str_element1.replace(r"\'", "'")
+    str_element3 = str_element2.replace("', \"", "")
+    str_element4 = str_element3.replace("\",'", "")
+    str_element5 = str_element4.replace('", "', "")
+    str_element6 = str_element5.replace("\", '", "")
+
+    return str_element6
 
 
 # separate question and answer

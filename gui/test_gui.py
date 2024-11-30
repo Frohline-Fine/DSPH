@@ -2,23 +2,27 @@ import sys
 
 from PyQt6.QtGui import QFont
 
+from db.init_db import db
 from helper.clean_exercise import clean_exercise
 from helper.translator import translate
-from helper.paths import csv_file
+from helper.constants import COLLECTION
+# from helper.paths import csv_file
 
 import pandas as pd
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtWidgets import (
     QDialog,
     QApplication, QLabel, QPushButton, QGridLayout, )
+from pymongoarrow.monkey import patch_all
+patch_all()
 
 
 class TrainDialog(QDialog):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Aufgabe")
-        self.resize(500, 500)
-        self.dataframe = pd.read_csv(csv_file)
+        self.setFixedSize(1200, 800)
+        self.dataframe = db[COLLECTION].find_pandas_all({})
         self.exercise = clean_exercise(self.dataframe)
 
         self.button_answer = QPushButton("Zeige Antwort")
@@ -31,19 +35,24 @@ class TrainDialog(QDialog):
 
         self.label_question = QLabel(self.exercise[0])
         self.label_question.setFont(QFont('Arial', 12))
+        self.label_question.setWordWrap(True)
         self.label_question_e = QLabel(translate(self.label_question.text()))
         self.label_question_e.setFont(QFont('Arial', 12))
+        self.label_question_e.setWordWrap(True)
 
         self.label_answer = QLabel(self.exercise[1])
         self.label_answer.setFont(QFont('Arial', 12))
+        self.label_answer.setWordWrap(True)
         self.label_answer.setHidden(True)
 
         self.label_explanation = QLabel(self.exercise[2])
         self.label_explanation.setFont(QFont('Arial', 12))
+        self.label_explanation.setWordWrap(True)
         self.label_explanation.setHidden(True)
 
         self.label_explanation_e = QLabel(translate(self.exercise[2]))
         self.label_explanation_e.setFont(QFont('Arial', 12))
+        self.label_explanation_e.setWordWrap(True)
         self.label_explanation_e.setHidden(True)
 
         main_layout = QGridLayout()
@@ -81,7 +90,7 @@ class TrainDialog(QDialog):
         self.label_explanation_e.setText(self.exercise[2])
 
 
-if __name__ == "__main__":
+def test_gui():
     app = QApplication(sys.argv)
     main_dialog = TrainDialog()
     main_dialog.show()
