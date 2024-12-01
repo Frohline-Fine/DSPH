@@ -5,6 +5,7 @@ This class divides the exercises into individual parts
 import re
 import pandas as pd
 from helper.exercise_divider import split_element, replace_chars
+from helper.clean_exercise import clean_exercise
 from helper.constants import CORRECT, R_ANSWERS, R_ANSWER, RIGHT, WRONG
 
 
@@ -31,11 +32,14 @@ def divide(df_in: pd.DataFrame) -> pd.DataFrame:
         elif re.findall(WRONG, str_element1):
             problem = split_element(WRONG, str_element1)
 
+        cleaned_problem = clean_exercise(problem)
+
         if len(problem) > 0:
-            exercises.append({'name': name,
-                              'question': problem['question'],
-                              'answer': problem['answer'],
-                              'explanation': problem['explanation']})
+            exercises.append({'id': i,
+                              'name': name,
+                              'question': cleaned_problem['question'],
+                              'answer': cleaned_problem['answer'],
+                              'explanation': cleaned_problem['explanation']})
         i += 1
 
     df_out = pd.DataFrame(exercises)

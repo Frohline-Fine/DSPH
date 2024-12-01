@@ -1,10 +1,6 @@
 """
 Provides random exercise from dataframe
 """
-from pathlib import Path
-
-# imports
-import pandas as pd
 
 
 # get rid of unwanted characters
@@ -16,12 +12,11 @@ def cutter(string):
 
 
 # provide cleaned strings for QLabelWidgets
-def clean_exercise(df: pd.DataFrame):
-    e = df.sample()
-    i = e.index[0]
+def clean_exercise(problem):
+    cleaned_problem = {'question': [], 'answer': [], 'explanation': []}
 
-    question = cutter(str(df['question'][i]))
-    answer = cutter(str(df['answer'][i]))
-    explanation = cutter(str(df['explanation'][i]))
+    cleaned_problem['question'].append(cutter(str(problem['question'])))
+    cleaned_problem['answer'].append(cutter(str(problem['answer'])))
+    cleaned_problem['explanation'].append(cutter(str(problem['explanation'])))
 
-    return question, answer, explanation
+    return cleaned_problem
