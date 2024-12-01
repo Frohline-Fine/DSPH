@@ -5,7 +5,7 @@ This class divides the exercises into individual parts
 import re
 import pandas as pd
 from helper.exercise_divider import split_element, replace_chars
-from helper.clean_exercise import clean_exercise
+from db.init_funcs.clean_exercise import clean_exercise
 from helper.constants import CORRECT, R_ANSWERS, R_ANSWER, RIGHT, WRONG
 
 

@@ -3,13 +3,12 @@ import sys
 from PyQt6.QtGui import QFont
 
 from db.init_db import db
-from helper.clean_exercise import clean_exercise
+from db.init_funcs.clean_exercise import clean_exercise
 from helper.translator import translate
 from helper.constants import COLLECTION
 # from helper.paths import csv_file
 
-import pandas as pd
-from PyQt6.QtCore import Qt, QSize
+from PyQt6.QtCore import QSize
 from PyQt6.QtWidgets import (
     QDialog,
     QApplication, QLabel, QPushButton, QGridLayout, )
