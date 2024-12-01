@@ -2,10 +2,10 @@ import sys
 
 from PyQt6.QtGui import QFont
 
-from db.init_db import db
+from db.init_db import db, client, collection
 from db.init_funcs.clean_exercise import clean_exercise
 from helper.translator import translate
-from helper.constants import COLLECTION
+# from helper.constants import COLLECTION
 # from helper.paths import csv_file
 
 from PyQt6.QtCore import QSize
@@ -21,8 +21,9 @@ class TrainDialog(QDialog):
         super().__init__()
         self.setWindowTitle("Aufgabe")
         self.setFixedSize(1200, 800)
-        self.dataframe = db[COLLECTION].find_pandas_all({})
-        self.exercise = clean_exercise(self.dataframe)
+        self.client = client
+        self.db = db
+        self.collection = collection
 
         self.button_answer = QPushButton("Zeige Antwort")
         self.button_answer.setIconSize(QSize(16, 16))
@@ -35,6 +36,7 @@ class TrainDialog(QDialog):
         self.label_question = QLabel(self.exercise[0])
         self.label_question.setFont(QFont('Arial', 12))
         self.label_question.setWordWrap(True)
+
         self.label_question_e = QLabel(translate(self.label_question.text()))
         self.label_question_e.setFont(QFont('Arial', 12))
         self.label_question_e.setWordWrap(True)
