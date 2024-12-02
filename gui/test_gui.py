@@ -5,6 +5,7 @@ from PyQt6.QtGui import QFont
 from db.init_db import db, client, collection
 from db.init_funcs.clean_exercise import clean_exercise
 from helper.translator import translate
+from helper.gui_helper import random_exercise
 # from helper.constants import COLLECTION
 # from helper.paths import csv_file
 
@@ -12,8 +13,8 @@ from PyQt6.QtCore import QSize
 from PyQt6.QtWidgets import (
     QDialog,
     QApplication, QLabel, QPushButton, QGridLayout, )
-from pymongoarrow.monkey import patch_all
-patch_all()
+# from pymongoarrow.monkey import patch_all
+# patch_all()
 
 
 class TrainDialog(QDialog):
@@ -21,9 +22,7 @@ class TrainDialog(QDialog):
         super().__init__()
         self.setWindowTitle("Aufgabe")
         self.setFixedSize(1200, 800)
-        self.client = client
-        self.db = db
-        self.collection = collection
+        self.exercise = random_exercise()
 
         self.button_answer = QPushButton("Zeige Antwort")
         self.button_answer.setIconSize(QSize(16, 16))
@@ -33,25 +32,25 @@ class TrainDialog(QDialog):
         self.button_reset.setIconSize(QSize(16, 16))
         self.button_reset.clicked.connect(self.reset)
 
-        self.label_question = QLabel(self.exercise[0])
+        self.label_question = QLabel(self.exercise['question'])
         self.label_question.setFont(QFont('Arial', 12))
         self.label_question.setWordWrap(True)
 
-        self.label_question_e = QLabel(translate(self.label_question.text()))
+        self.label_question_e = QLabel(self.exercise['question_e'])
         self.label_question_e.setFont(QFont('Arial', 12))
         self.label_question_e.setWordWrap(True)
 
-        self.label_answer = QLabel(self.exercise[1])
+        self.label_answer = QLabel(self.exercise['answer'])
         self.label_answer.setFont(QFont('Arial', 12))
         self.label_answer.setWordWrap(True)
         self.label_answer.setHidden(True)
 
-        self.label_explanation = QLabel(self.exercise[2])
+        self.label_explanation = QLabel(self.exercise['explanation'])
         self.label_explanation.setFont(QFont('Arial', 12))
         self.label_explanation.setWordWrap(True)
         self.label_explanation.setHidden(True)
 
-        self.label_explanation_e = QLabel(translate(self.exercise[2]))
+        self.label_explanation_e = QLabel(translate(self.exercise['explanation_e']))
         self.label_explanation_e.setFont(QFont('Arial', 12))
         self.label_explanation_e.setWordWrap(True)
         self.label_explanation_e.setHidden(True)
@@ -77,18 +76,21 @@ class TrainDialog(QDialog):
         self.label_explanation_e.setHidden(False)
         self.button_answer.setHidden(True)
 
-    def reset(self):
+    def hide_answer(self):
         self.label_answer.setHidden(True)
         self.label_explanation.setHidden(True)
         self.label_explanation_e.setHidden(True)
         self.button_answer.setHidden(False)
 
-        self.exercise = clean_exercise(self.dataframe)
-        self.label_question.setText(self.exercise[0])
-        self.label_question_e.setText(translate(self.exercise[0]))
-        self.label_answer.setText(self.exercise[1])
-        self.label_explanation.setText(self.exercise[2])
-        self.label_explanation_e.setText(self.exercise[2])
+    def reset(self):
+        self.hide_answer()
+
+        self.exercise = random_exercise()
+        self.label_question.setText(self.exercise['question'])
+        self.label_question_e.setText(translate(self.exercise['question_e']))
+        self.label_answer.setText(self.exercise['answer'])
+        self.label_explanation.setText(self.exercise['explanation'])
+        self.label_explanation_e.setText(self.exercise['explanation_e'])
 
 
 def test_gui():
