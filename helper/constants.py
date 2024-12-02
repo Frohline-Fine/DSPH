@@ -2,9 +2,9 @@
 Constants library
 """
 
-# db
-DB_NAME = 'pruefungshelfer'
-COLLECTION = 'exercises'
+# # db
+DB_NAME = 'pruefungshelfer.sqlite'
+TABLE = 'exercises'
 
 
 # divide_exercise.py

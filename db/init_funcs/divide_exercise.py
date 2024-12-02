@@ -7,7 +7,6 @@ import pandas as pd
 from helper.exercise_divider import split_element, replace_chars
 from db.init_funcs.clean_exercise import clean_exercise
 from helper.constants import CORRECT, R_ANSWERS, R_ANSWER, RIGHT, WRONG, SOLUTION
-from helper.translator import translate
 
 
 # split exercises into parts and update dataframe
@@ -41,12 +40,10 @@ def divide(df_in: pd.DataFrame) -> pd.DataFrame:
             exercises.append({'id': i,
                               'name': name,
                               'question': cleaned_problem[0],
-                              'question_e': translate(cleaned_problem[0]),
                               'answer': cleaned_problem[1],
                               'explanation': cleaned_problem[2],
-                              'explanation_e': translate(cleaned_problem[2]),
                               })
-        print(f"Übung {i} bearbeitet")
+        print(f"Übung {i + 1} bearbeitet")
         i += 1
 
     df_out = pd.DataFrame(exercises)
