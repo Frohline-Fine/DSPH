@@ -26,25 +26,25 @@ class TrainDialog(QDialog):
         self.button_reset.setIconSize(QSize(16, 16))
         self.button_reset.clicked.connect(self.reset)
 
-        self.label_question = QLabel(self.exercise['question'])
+        self.label_question = QLabel(self.exercise[2])
         self.label_question.setFont(QFont('Arial', 12))
         self.label_question.setWordWrap(True)
 
-        self.label_question_e = QLabel(self.exercise['question_e'])
+        self.label_question_e = QLabel(translate(self.exercise[2]))
         self.label_question_e.setFont(QFont('Arial', 12))
         self.label_question_e.setWordWrap(True)
 
-        self.label_answer = QLabel(self.exercise['answer'])
+        self.label_answer = QLabel(self.exercise[3])
         self.label_answer.setFont(QFont('Arial', 12))
         self.label_answer.setWordWrap(True)
         self.label_answer.setHidden(True)
 
-        self.label_explanation = QLabel(self.exercise['explanation'])
+        self.label_explanation = QLabel(self.exercise[4])
         self.label_explanation.setFont(QFont('Arial', 12))
         self.label_explanation.setWordWrap(True)
         self.label_explanation.setHidden(True)
 
-        self.label_explanation_e = QLabel(translate(self.exercise['explanation_e']))
+        self.label_explanation_e = QLabel(translate(self.exercise[4]))
         self.label_explanation_e.setFont(QFont('Arial', 12))
         self.label_explanation_e.setWordWrap(True)
         self.label_explanation_e.setHidden(True)
@@ -80,11 +80,11 @@ class TrainDialog(QDialog):
         self.hide_answer()
 
         self.exercise = random_exercise()
-        self.label_question.setText(self.exercise['question'])
-        self.label_question_e.setText(translate(self.exercise['question_e']))
-        self.label_answer.setText(self.exercise['answer'])
-        self.label_explanation.setText(self.exercise['explanation'])
-        self.label_explanation_e.setText(self.exercise['explanation_e'])
+        self.label_question.setText(self.exercise[2])
+        self.label_question_e.setText(translate(self.exercise[2]))
+        self.label_answer.setText(self.exercise[3])
+        self.label_explanation.setText(self.exercise[4])
+        self.label_explanation_e.setText(translate(self.exercise[4]))
 
 
 def test_gui():

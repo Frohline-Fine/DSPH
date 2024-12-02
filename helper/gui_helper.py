@@ -13,5 +13,4 @@ def random_exercise():
     query = f"SELECT * FROM {TABLE} WHERE id = {id}"
 
     exercise = cursor.execute(query).fetchone()
-
     return exercise
