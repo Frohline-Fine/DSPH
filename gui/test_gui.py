@@ -2,19 +2,13 @@ import sys
 
 from PyQt6.QtGui import QFont
 
-from db.init_db import db, client, collection
-from db.init_funcs.clean_exercise import clean_exercise
 from helper.translator import translate
 from helper.gui_helper import random_exercise
-# from helper.constants import COLLECTION
-# from helper.paths import csv_file
 
 from PyQt6.QtCore import QSize
 from PyQt6.QtWidgets import (
     QDialog,
     QApplication, QLabel, QPushButton, QGridLayout, )
-# from pymongoarrow.monkey import patch_all
-# patch_all()
 
 
 class TrainDialog(QDialog):
