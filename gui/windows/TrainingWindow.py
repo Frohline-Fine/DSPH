@@ -11,7 +11,7 @@ from helper.constants import ANSWER, NEXT
 from helper.gui_helper import random_exercise, concat
 
 
-class TrainingWidget(QWidget):
+class TrainingWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Training")
