@@ -7,16 +7,16 @@ from PyQt6.QtWidgets import QWidget
 from gui.layouts.training import training_layout
 from gui.widgets.button import Button
 from gui.widgets.label import Label
-from helper.constants import ANSWER, NEXT
+from helper.constants import ANSWER, NEXT, TRAINING
 from helper.gui_helper import random_exercise, concat
 
 
-class TrainingWidget(QWidget):
+class TrainingWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Training")
         self.setFixedSize(800, 800)
-        self.setStyleSheet("background-color: rgb(185,211,238); margin: 20px;")
+        self.setStyleSheet(f"background-color: rgb({TRAINING}); margin: 20px;")
         self.exercise = random_exercise()
 
         self.explanation = Label(self)
