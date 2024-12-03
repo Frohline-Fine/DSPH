@@ -34,13 +34,7 @@ def get_explanation(string):
 
 # split element in three parts (question, answer and explanation)
 def split_element(seperator, string):
-    exercise = {'question': [], 'answer': [], 'explanation': []}
-
     q, a = get_question(seperator, string)
     an, ex = get_explanation(a)
 
-    exercise['question'].append(q)
-    exercise['answer'].append(an)
-    exercise['explanation'].append(ex)
-
-    return exercise
+    return q, an, ex
