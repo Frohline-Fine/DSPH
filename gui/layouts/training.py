@@ -1,22 +1,22 @@
 """
-Grid-Layout für TrainingWindow
+Grid-Layout für Window Training
 """
 # imports
-from PyQt6.QtWidgets import QGridLayout
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QVBoxLayout, QHBoxLayout
 
 
 def training_layout(window):
-    main_layout = QGridLayout()
-    main_layout.setSpacing(20)
-    main_layout.setContentsMargins(20, 20, 20, 20)
+    qu_layout = QVBoxLayout()
+    qu_layout.addWidget(window.question)
+    qu_layout.addWidget(window.explanation)
+    qu_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-    main_layout.addWidget(window.label_question, 0, 0)
-    main_layout.addWidget(window.label_question_e, 0, 1)
+    btn_layout = QHBoxLayout()
+    btn_layout.addWidget(window.btn_show)
+    btn_layout.addWidget(window.btn_next)
+    btn_layout.setAlignment(Qt.AlignmentFlag.AlignRight)
 
-    main_layout.addWidget(window.label_answer, 1, 0)
-    main_layout.addWidget(window.label_explanation, 2, 0)
-    main_layout.addWidget(window.label_explanation_e, 2, 1)
-    main_layout.addWidget(window.button_answer, 3, 0)
-    main_layout.addWidget(window.button_reset, 3, 1)
+    qu_layout.addLayout(btn_layout)
 
-    return main_layout
+    return qu_layout
