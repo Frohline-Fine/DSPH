@@ -2,11 +2,16 @@
 Constants library
 """
 
-# db
+# RGB
+MAIN = '143,188,143'
+TRAINING = '143,188,143'
+LABEL = '245,255,250'
+
+# DB
 DB_NAME = 'pruefungshelfer.sqlite'
 TABLE = 'exercises'
 
-# gui
+# GUI
 ANSWER = 'Lösung'
 NEXT = 'Weiter'
 
