@@ -16,7 +16,7 @@ class TrainingEngWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Training (english)")
-        self.setFixedSize(1550, 800)
+        self.setFixedSize(1550, 950)
         self.setStyleSheet(f"background-color: rgb({TRAINING}); margin: 20px;")
         self.exercise = random_exercise()
 
