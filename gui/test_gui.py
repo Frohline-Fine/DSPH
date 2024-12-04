@@ -2,6 +2,10 @@ import sys
 
 from PyQt6.QtGui import QFont
 
+from db.init import cursor
+from db.init_funcs.clean_exercise import clean_exercise
+from helper.constants import TABLE
+from helper.strings import sort_answers_for_exam
 from helper.translator import translate
 from helper.gui_helper import random_exercise
 
@@ -11,12 +15,18 @@ from PyQt6.QtWidgets import (
     QApplication, QLabel, QPushButton, QGridLayout, )
 
 
+def not_random_exercise():
+    query = f"SELECT * FROM {TABLE} WHERE id = 331"
+    exercise = cursor.execute(query).fetchone()
+    return exercise
+
+
 class TrainDialog(QDialog):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Aufgabe")
         self.setFixedSize(1200, 800)
-        self.exercise = random_exercise()
+        self.exercise = not_random_exercise()
 
         self.button_answer = QPushButton("Zeige Antwort")
         self.button_answer.setIconSize(QSize(16, 16))
@@ -30,9 +40,9 @@ class TrainDialog(QDialog):
         self.label_question.setFont(QFont('Arial', 12))
         self.label_question.setWordWrap(True)
 
-        self.label_question_e = QLabel(translate(self.exercise[2]))
-        self.label_question_e.setFont(QFont('Arial', 12))
-        self.label_question_e.setWordWrap(True)
+        # self.label_question_e = QLabel(translate(self.exercise[2]))
+        # self.label_question_e.setFont(QFont('Arial', 12))
+        # self.label_question_e.setWordWrap(True)
 
         self.label_answer = QLabel(self.exercise[3])
         self.label_answer.setFont(QFont('Arial', 12))
@@ -44,21 +54,21 @@ class TrainDialog(QDialog):
         self.label_explanation.setWordWrap(True)
         self.label_explanation.setHidden(True)
 
-        self.label_explanation_e = QLabel(translate(self.exercise[4]))
-        self.label_explanation_e.setFont(QFont('Arial', 12))
-        self.label_explanation_e.setWordWrap(True)
-        self.label_explanation_e.setHidden(True)
+        # self.label_explanation_e = QLabel(translate(self.exercise[4]))
+        # self.label_explanation_e.setFont(QFont('Arial', 12))
+        # self.label_explanation_e.setWordWrap(True)
+        # self.label_explanation_e.setHidden(True)
 
         main_layout = QGridLayout()
         main_layout.setSpacing(20)
         main_layout.setContentsMargins(20, 20, 20, 20)
 
         main_layout.addWidget(self.label_question, 0, 0)
-        main_layout.addWidget(self.label_question_e, 0, 1)
+        # main_layout.addWidget(self.label_question_e, 0, 1)
 
         main_layout.addWidget(self.label_answer, 1, 0)
         main_layout.addWidget(self.label_explanation, 2, 0)
-        main_layout.addWidget(self.label_explanation_e, 2, 1)
+        # main_layout.addWidget(self.label_explanation_e, 2, 1)
         main_layout.addWidget(self.button_answer, 3, 0)
         main_layout.addWidget(self.button_reset, 3, 1)
 
@@ -67,24 +77,19 @@ class TrainDialog(QDialog):
     def show_answer(self):
         self.label_answer.setHidden(False)
         self.label_explanation.setHidden(False)
-        self.label_explanation_e.setHidden(False)
+        # self.label_explanation_e.setHidden(False)
         self.button_answer.setHidden(True)
 
     def hide_answer(self):
         self.label_answer.setHidden(True)
         self.label_explanation.setHidden(True)
-        self.label_explanation_e.setHidden(True)
+        # self.label_explanation_e.setHidden(True)
         self.button_answer.setHidden(False)
 
     def reset(self):
         self.hide_answer()
-
-        self.exercise = random_exercise()
-        self.label_question.setText(self.exercise[2])
-        self.label_question_e.setText(translate(self.exercise[2]))
-        self.label_answer.setText(self.exercise[3])
-        self.label_explanation.setText(self.exercise[4])
-        self.label_explanation_e.setText(translate(self.exercise[4]))
+        print(f"ex {self.exercise}")
+        print(clean_exercise(self.exercise))
 
 
 def test_gui():
@@ -92,3 +97,7 @@ def test_gui():
     main_dialog = TrainDialog()
     main_dialog.show()
     sys.exit(app.exec())
+
+
+if __name__ == '__main__':
+    test_gui()

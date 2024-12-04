@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import QWidget
 from gui.layouts.training_eng_window import training_eng_layout
 from gui.widgets.button import Button
 from gui.widgets.label import Label
-from helper.constants import ANSWER, NEXT, TRAINING
+from helper.constants import BTN_ANSWER, BTN_NEXT, TRAINING
 from helper.gui_helper import random_exercise, concat
 from helper.translator import translate
 
@@ -27,11 +27,11 @@ class TrainingEngWindow(QWidget):
         self.question.setText(self.exercise[2])
 
         self.btn_show = Button(self)
-        self.btn_show.setText(ANSWER)
+        self.btn_show.setText(BTN_ANSWER)
         self.btn_show.clicked.connect(self.show_answer)
 
         self.btn_next = Button(self)
-        self.btn_next.setText(NEXT)
+        self.btn_next.setText(BTN_NEXT)
         self.btn_next.clicked.connect(self.next_question)
 
         self.explanation_e = Label(self)

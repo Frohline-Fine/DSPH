@@ -1,5 +1,5 @@
 """
-Provides random exercise from dataframe
+Provides clean exercise
 """
 
 
