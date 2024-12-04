@@ -1,10 +1,11 @@
 import sys
 
-from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtWidgets import QMainWindow, QPushButton, QApplication, QWidget
+from PyQt6.QtCore import QSize
+from PyQt6.QtWidgets import QMainWindow, QApplication, QWidget
 
 from gui.layouts.main_window import main_layout
 from gui.widgets.button import Button
+from gui.windows.TrainingEngWindow import TrainingEngWindow
 from gui.windows.TrainingWindow import TrainingWindow
 from helper.constants import MAIN, BTN_TRAINING, BTN_EXAM, BTN_TRAINING_E, BTN_EXIT
 
@@ -46,7 +47,8 @@ class MainWindow(QMainWindow):
         self.training_window.show()
 
     def open_training_english(self):
-        pass
+        self.training_eng_window = TrainingEngWindow()
+        self.training_eng_window.show()
 
     def open_exam(self):
         pass

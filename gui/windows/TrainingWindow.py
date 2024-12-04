@@ -33,9 +33,9 @@ class TrainingWindow(QWidget):
         self.btn_next.setText(NEXT)
         self.btn_next.clicked.connect(self.next_question)
 
-        main_layout = training_layout(self)
+        layout = training_layout(self)
 
-        self.setLayout(main_layout)
+        self.setLayout(layout)
 
     def show_answer(self):
         self.explanation.setText(concat(self.exercise[3], self.exercise[4]))

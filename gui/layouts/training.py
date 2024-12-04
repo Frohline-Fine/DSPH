@@ -1,5 +1,5 @@
 """
-Grid-Layout für Window Training
+Grid-Layout for Window Training
 """
 # imports
 from PyQt6.QtCore import Qt
