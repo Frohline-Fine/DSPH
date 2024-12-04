@@ -32,7 +32,7 @@ class MainWindow(QMainWindow):
         self.btn_training.clicked.connect(self.open_training)
         self.btn_training_e.clicked.connect(self.open_training_english)
         self.btn_exam.clicked.connect(self.open_exam)
-        self.btn_exit.clicked.connect(self.exit_program)
+        self.btn_exit.clicked.connect(self.close)
 
         layout = main_layout(self)
 
@@ -49,9 +49,6 @@ class MainWindow(QMainWindow):
         pass
 
     def open_exam(self):
-        pass
-
-    def exit_program(self):
         pass
 
 
