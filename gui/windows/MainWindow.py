@@ -1,8 +1,9 @@
 import sys
 
 from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtWidgets import QMainWindow, QPushButton, QApplication, QVBoxLayout, QWidget
+from PyQt6.QtWidgets import QMainWindow, QPushButton, QApplication, QWidget
 
+from gui.layouts.main_window import main_layout
 from gui.widgets.button import Button
 from gui.windows.TrainingWindow import TrainingWindow
 from helper.constants import MAIN, BTN_TRAINING, BTN_EXAM, BTN_TRAINING_E, BTN_EXIT
@@ -15,11 +16,7 @@ class MainWindow(QMainWindow):
         self.setFixedSize(600, 600)
         self.setStyleSheet(f"background-color: rgb({MAIN});")
 
-        self.button = QPushButton(BTN_TRAINING)
-        self.button.clicked.connect(self.open_training)
-        self.setCentralWidget(self.button)
-
-        # Erstellen der Buttons
+        # Create buttons
         self.btn_training = Button(BTN_TRAINING)
         self.btn_training.setFixedSize(QSize(400, 100))
 
@@ -32,21 +29,14 @@ class MainWindow(QMainWindow):
         self.btn_exit = Button(BTN_EXIT)
         self.btn_exit.setFixedSize(QSize(400, 100))
 
-        # Verbinden der Buttons mit Funktionen
         self.btn_training.clicked.connect(self.open_training)
         self.btn_training_e.clicked.connect(self.open_training_english)
         self.btn_exam.clicked.connect(self.open_exam)
         self.btn_exit.clicked.connect(self.exit_program)
 
-        # Layout erstellen und Buttons hinzufügen
-        layout = QVBoxLayout()
-        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        layout.addWidget(self.btn_training)
-        layout.addWidget(self.btn_training_e)
-        layout.addWidget(self.btn_exam)
-        layout.addWidget(self.btn_exit)
+        layout = main_layout(self)
 
-        # Zentrales Widget erstellen und Layout zuweisen
+        # Create central widget
         central_widget = QWidget()
         central_widget.setLayout(layout)
         self.setCentralWidget(central_widget)
