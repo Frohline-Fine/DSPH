@@ -1,5 +1,8 @@
 """
+
+todo: deprecated  (to be deleted?)
 This class extracts text from source file and transfers it to csv file
+
 """
 # imports
 import pandas as pd

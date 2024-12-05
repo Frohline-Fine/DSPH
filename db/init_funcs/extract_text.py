@@ -1,8 +1,8 @@
 """
-todo: deprecated (to be deleted?)
 
-This class extracts text from a pdf and transfers it to a csv file
-but without unnecessary blank lines
+This class extracts text from pdf and transfers to dataframe
+without unnecessary blank lines
+
 """
 # -*- coding: utf-8 -*-
 # Import extract_text function from the pdfminer.six library
@@ -20,15 +20,14 @@ def extract(path_to_pdf: Path) -> pd.DataFrame:
     lines = [line.strip() for line in text.splitlines() if line.strip()]
 
     # Join the non-empty lines back together with newline characters
-    cleaned_text = '\n'.join(lines)
+    cleaned_text = '<br>\n'.join(lines)
 
     # Transfer cleaned_text into Dataframe and csv
     tlist = []
     for line in cleaned_text.splitlines():
         tlist.append(line)
 
-    x = {'Question': tlist}
-    df = pd.DataFrame(x)
+    df = pd.DataFrame(tlist, columns=['Question'])
 
     print("data extracted")
 

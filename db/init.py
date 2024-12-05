@@ -1,14 +1,16 @@
 """
+
 This Class creates and fills SQLite
+
 """
 # imports
 import sqlite3
 
 from db.init_funcs.divide_exercise import divide
-from db.init_funcs.extract_data import extract_data
+from db.init_funcs.extract_text import extract
 from db.init_funcs.separate_exercises import separate
 from helper.constants import TABLE
-from helper.paths import db_file
+from helper.paths import db_file, src_file
 
 connection = sqlite3.connect(db_file)
 cursor = connection.cursor()
@@ -16,7 +18,7 @@ cursor = connection.cursor()
 
 def fill_table():
     # extract data from pdf and put it in dataframe
-    df_page = extract_data()
+    df_page = extract(src_file)
     df_separated = separate(df_page)
     df_divided = divide(df_separated)
 

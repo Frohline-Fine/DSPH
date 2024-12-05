@@ -22,15 +22,15 @@ BTN_EXAM = 'Prüfungssimulation'
 BTN_EXIT = 'Exit'
 
 # TrainingWindow
-ANSWER = 'Lösung'
-NEXT = 'Weiter'
+BTN_ANSWER = 'Lösung'
+BTN_NEXT = 'Weiter'
 
 """ DB Init """
 
 # divide_exercise.py
-CORRECT = 'Korrekte Antwort'
-R_ANSWERS = 'Richtige Antworten'
-R_ANSWER = 'Richtige Antwort'
+CORRECT = 'Korrekte Antwort:'
+R_ANSWERS = 'Richtige Antworten:'
+R_ANSWER = 'Richtige Antwort:'
 SOLUTION = 'Lösung:'
 RIGHT = 'Richtig'
 WRONG = 'Falsch'
