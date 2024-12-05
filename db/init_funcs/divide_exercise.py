@@ -1,19 +1,19 @@
 """
+
 This class divides the exercises into individual parts
+
 """
 # imports
-import re
 import pandas as pd
-from helper.strings import split_element, replace_chars, sort_by_separator
+from helper.strings import replace_chars, sort_by_separator
 from db.init_funcs.clean_exercise import clean_exercise
-from helper.constants import CORRECT, R_ANSWERS, R_ANSWER, RIGHT, WRONG, SOLUTION
 
 
 # split exercises into parts and update dataframe
 def divide(df_in: pd.DataFrame) -> pd.DataFrame:
     exercises = []
     i = 0
-
+    print(df_in)
     for element in df_in['Exercise']:
         name = f"Übung {i + 1}"
 
