@@ -20,3 +20,13 @@ def random_exercise():
     exercise = cursor.execute(query).fetchone()
 
     return exercise
+
+
+# create collection of questions for exam
+def create_exam():
+    exam = []
+
+    for i in range(80):
+        exam.append(random_exercise())
+
+    return exam

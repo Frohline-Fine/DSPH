@@ -5,7 +5,7 @@ Provides clean exercise
 
 # get rid of unwanted characters
 def cutter(string):
-    cut = string.strip(r'["').strip("['").strip(r'"]')
+    cut = string.strip(r'["').strip("['").strip(r"']")
     clean_cut = cut.replace(r"\n", "<br>")
 
     return clean_cut
