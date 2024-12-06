@@ -58,14 +58,3 @@ class MainWindow(QMainWindow):
 
     def open_exam(self):
         pass
-
-
-def main():
-    app = QApplication(sys.argv)
-    main_dialog = MainWindow()
-    main_dialog.show()
-    sys.exit(app.exec())
-
-
-if __name__ == '__main__':
-    main()
