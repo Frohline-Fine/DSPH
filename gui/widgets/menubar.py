@@ -10,7 +10,7 @@ from PyQt6.QtWidgets import QDockWidget, QListWidget
 def create_side_menu(self):
     # create QDockWidget
     dock = QDockWidget("Menü", self)
-    dock.setAllowedAreas(Qt.DockWidgetArea.LeftDockWidgetArea)
+    dock.setAllowedAreas(Qt.DockWidgetArea.RightDockWidgetArea)
 
     # create QListWidget for menu items
     menu_list = QListWidget()
@@ -22,6 +22,6 @@ def create_side_menu(self):
     dock.setWidget(menu_list)
 
     # add QDockWidget to exam window
-    self.addDockWidget(Qt.DockWidgetArea.LeftDockWidgetArea, dock)
-    #
-    # return dock
+    self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, dock)
+
+    return dock

@@ -1,5 +1,7 @@
 """
+
 Helper functions for String objects
+
 """
 import re
 

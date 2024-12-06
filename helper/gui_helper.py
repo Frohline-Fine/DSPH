@@ -1,5 +1,7 @@
 """
+
 Helper functions for GUI
+
 """
 # imports
 import random

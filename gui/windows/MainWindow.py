@@ -1,3 +1,9 @@
+"""
+
+Window Main
+
+"""
+
 import sys
 
 from PyQt6.QtCore import QSize

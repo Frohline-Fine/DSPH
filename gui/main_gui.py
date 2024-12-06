@@ -1,6 +1,9 @@
 """
-Hauptfunktion GUI
+
+Mainfuntion GUI
+
 """
+# imports
 import sys
 
 from PyQt6.QtWidgets import QApplication

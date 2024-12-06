@@ -1,3 +1,9 @@
+"""
+
+Labels for GUI
+
+"""
+# imports
 from PyQt6.QtWidgets import QLabel
 
 from helper.constants import LABEL

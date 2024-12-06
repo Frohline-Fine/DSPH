@@ -1,8 +1,9 @@
 """
+
 Translate text into english
+
 """
 import time
-import random
 from googletrans import Translator
 
 

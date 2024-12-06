@@ -2,7 +2,9 @@
 todo: deprecated (to be deleted?)
 
 This class separates the problem from options
+
 """
+# imports
 import pathlib
 import re
 from pathlib import Path

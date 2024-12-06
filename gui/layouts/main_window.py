@@ -1,5 +1,7 @@
 """
+
 Grid-Layout für Window Main
+
 """
 # imports
 from PyQt6.QtCore import Qt
