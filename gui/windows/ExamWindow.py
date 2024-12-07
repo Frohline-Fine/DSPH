@@ -8,6 +8,7 @@ import sys
 from PyQt6.QtCore import QTimer, Qt
 from PyQt6.QtWidgets import QWidget, QApplication, QVBoxLayout, QMainWindow, QLineEdit
 
+from gui.widgets.input import Input
 from gui.widgets.label import Label
 from gui.widgets.menubar import create_side_menu
 from helper.constants import EXAM
@@ -34,13 +35,9 @@ class ExamWindow(QMainWindow):
         self.question = Label(self)
         self.question.setText(self.exercises[0][2])
 
-        self.answer = QLineEdit()
+        self.answer = Input()
         self.answer.setText(self.exercises[0][3])
-        self.answer.setMaxLength(10)
         self.answer.returnPressed.connect(self.set_answer)
-
-        # self.answer = Label(self)
-        # self.answer.setText(sort_answers_for_exam(self.exercises[0][3]))
 
         layout = QVBoxLayout()
         layout.addWidget(self.question)
