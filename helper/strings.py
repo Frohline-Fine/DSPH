@@ -74,8 +74,9 @@ def sort_answers_for_exam(element):
         answer = element.strip(R_ANSWERS).strip('<br>')
         print(answer)
     elif re.findall(R_ANSWER, element):
-        answer = element.strip(R_ANSWER).strip('<br>')
-        print(answer)
+        answer = element.strip(R_ANSWER)
+        answer1 = answer.strip('<br>')
+        print(answer1)
     elif re.findall(SOLUTION, element):
         answer = element[8]
         print(answer)

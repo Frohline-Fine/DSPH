@@ -6,12 +6,13 @@ Window Exam with Timer and Scoring
 import sys
 
 from PyQt6.QtCore import QTimer, Qt
-from PyQt6.QtWidgets import QWidget, QApplication, QVBoxLayout, QMainWindow
+from PyQt6.QtWidgets import QWidget, QApplication, QVBoxLayout, QMainWindow, QLineEdit
 
 from gui.widgets.label import Label
 from gui.widgets.menubar import create_side_menu
 from helper.constants import EXAM
 from helper.gui_helper import create_exam
+from helper.strings import sort_answers_for_exam
 
 
 class ExamWindow(QMainWindow):
@@ -20,8 +21,9 @@ class ExamWindow(QMainWindow):
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         self.setWindowTitle("Prüfungssimulation")
-        self.setFixedSize(1050, 950)
+        self.setFixedSize(1000, 900)
         self.setStyleSheet(f"background-color: rgb({EXAM}); margin: 20px;")
+
         self.exercises = create_exam()
         self.dock = create_side_menu(self)
 
@@ -32,11 +34,22 @@ class ExamWindow(QMainWindow):
         self.question = Label(self)
         self.question.setText(self.exercises[0][2])
 
-        layout = QVBoxLayout()
-        layout.setAlignment(Qt.AlignmentFlag.AlignRight)
-        layout.addWidget(self.question)
+        self.answer = QLineEdit()
+        self.answer.setText(self.exercises[0][3])
+        self.answer.setMaxLength(10)
+        self.answer.returnPressed.connect(self.set_answer)
 
-        self.setLayout(layout)
+        # self.answer = Label(self)
+        # self.answer.setText(sort_answers_for_exam(self.exercises[0][3]))
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.question)
+        layout.addWidget(self.answer)
+
+        central_widget.setLayout(layout)
+
+    def set_answer(self):
+        pass
 
     def stop_exam(self):
         pass
@@ -45,8 +58,12 @@ class ExamWindow(QMainWindow):
         pass
 
 
-if __name__ == '__main__':
+def main():
     app = QApplication(sys.argv)
     ex = ExamWindow()
     ex.show()
     sys.exit(app.exec())
+
+
+if __name__ == '__main__':
+    main()
