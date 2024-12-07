@@ -16,6 +16,7 @@ def create_side_menu(self):
     dock.setTitleBarWidget(QWidget())
     dock.setStyleSheet(f"""
             background-color: rgb(245,255,250);
+            margin: 20px;
             padding: 10px;
             border: 2px solid black;
             border-radius: 8px;

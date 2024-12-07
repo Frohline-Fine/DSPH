@@ -19,5 +19,6 @@ class Button(QPushButton):
         padding: 10px;
         margin: 20px;
         border: 2px solid black;
+        border-radius: 8px;
         font-family: Arial; font-size: 14px; font-weight: bold;
         """)
