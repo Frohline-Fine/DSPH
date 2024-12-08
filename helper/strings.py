@@ -68,11 +68,15 @@ def sort_by_separator(str_element):
 def sort_answers_for_exam(element):
     answer = []
     if re.findall(CORRECT, element):
-        answer = element.strip(CORRECT)[slice(-4)]
+        answer = element[18]
     elif re.findall(R_ANSWERS, element):
         answer = element.strip(R_ANSWERS)[slice(-4)]
+        if re.findall('Option', answer):
+            answer = answer[7:]
     elif re.findall(R_ANSWER, element):
         answer = element.strip(R_ANSWER)[slice(-4)]
+        if re.findall('Option', answer):
+            answer = answer[7:]
     elif re.findall(SOLUTION, element):
         answer = element[8]
     elif re.findall(RIGHT, element):
@@ -80,4 +84,5 @@ def sort_answers_for_exam(element):
     elif re.findall(WRONG, element):
         answer = WRONG
 
+    print(answer)
     return answer
