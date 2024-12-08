@@ -69,22 +69,15 @@ def sort_answers_for_exam(element):
     answer = []
     if re.findall(CORRECT, element):
         answer = element.strip(CORRECT)[slice(-4)]
-        print(answer)
     elif re.findall(R_ANSWERS, element):
         answer = element.strip(R_ANSWERS)[slice(-4)]
-        print(answer)
     elif re.findall(R_ANSWER, element):
         answer = element.strip(R_ANSWER)[slice(-4)]
-        # answer1 = answer.replace(r'<br>', '')
-        print(answer)
     elif re.findall(SOLUTION, element):
         answer = element[8]
-        print(answer)
     elif re.findall(RIGHT, element):
         answer = RIGHT
-        print(answer)
     elif re.findall(WRONG, element):
         answer = WRONG
-        print(answer)
 
     return answer
