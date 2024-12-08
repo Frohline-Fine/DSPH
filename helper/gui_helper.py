@@ -10,6 +10,7 @@ import pandas as pd
 
 from db.init import cursor
 from helper.constants import TABLE
+from helper.strings import sort_answers_for_exam
 
 
 # combine answer and explanation for Label
@@ -45,7 +46,8 @@ def create_exam():
         exam.append({
             'id': i,
             'question': task[2],
-            'answer': [],
+            'correct_answer': sort_answers_for_exam(task[3]),
+            'user_answer': [],
         })
 
     df_exam = pd.DataFrame(exam)
