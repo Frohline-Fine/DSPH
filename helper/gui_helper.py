@@ -44,7 +44,6 @@ def create_exam():
 
     for i, task in enumerate(tasks):
         exam.append({
-            'id': i,
             'question': task[2],
             'correct_answer': sort_answers_for_exam(task[3]),
             'user_answer': [],

@@ -4,7 +4,7 @@ Menubar for Exam mode
 
 """
 from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QDockWidget, QListWidget, QWidget, QMenuBar
+from PyQt6.QtWidgets import QDockWidget, QListWidget, QWidget, QMenuBar, QListWidgetItem
 
 from helper.constants import LABEL
 
@@ -25,8 +25,9 @@ def create_side_menu(self):
 
     # create QListWidget for menu items
     menu_list = QListWidget()
-    for ex in self.exercises:
-        menu_list.addItem(ex[2][:20])
+    for index, row in self.exercises.iterrows():
+        qu = QListWidgetItem(str(row['question']))
+        menu_list.addItem(qu)
 
     menu_list.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
     menu_list.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
