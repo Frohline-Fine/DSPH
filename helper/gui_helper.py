@@ -42,7 +42,7 @@ def create_exam():
     tasks = create_tasks()
     exam = []
 
-    for i, task in enumerate(tasks):
+    for task in tasks:
         exam.append({
             'question': task[2],
             'correct_answer': sort_answers_for_exam(task[3]),

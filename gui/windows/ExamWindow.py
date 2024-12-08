@@ -44,11 +44,10 @@ class ExamWindow(QMainWindow):
         self.label_time.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.question = Label(self)
-        # self.question.setText(self.exercises[0]['question'])
-        print(self.exercises)
+        self.question.setText(self.exercises.loc[0, 'question'])
 
         self.answer = Input()
-        # self.answer.setText(self.exercises[0]['correct_answer'])
+        self.answer.setText(self.exercises.loc[0, 'correct_answer'])
         self.answer.returnPressed.connect(self.set_answer)
 
         self.btn_back = Button(self)
