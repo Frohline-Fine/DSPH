@@ -6,6 +6,8 @@ Helper functions for GUI
 # imports
 import random
 
+import pandas as pd
+
 from db.init import cursor
 from helper.constants import TABLE
 
@@ -24,11 +26,28 @@ def random_exercise():
     return exercise
 
 
-# create collection of questions for exam
-def create_exam():
-    exam = []
+# create collection of 80 random questions for exam
+def create_tasks():
+    tasks = []
 
     for i in range(80):
-        exam.append(random_exercise())
+        tasks.append(random_exercise())
 
-    return exam
+    return tasks
+
+
+# create dataframe exercises for ExamWindow
+def create_exam():
+    tasks = create_tasks()
+    exam = []
+
+    for i, task in enumerate(tasks):
+        exam.append({
+            'id': i,
+            'question': task[2],
+            'answer': [],
+        })
+
+    df_exam = pd.DataFrame(exam)
+    return df_exam
+

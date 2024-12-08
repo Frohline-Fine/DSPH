@@ -6,7 +6,7 @@ Window Exam with Timer and Scoring
 import sys
 
 from PyQt6.QtCore import QTimer, Qt, QTime
-from PyQt6.QtWidgets import QWidget, QApplication, QVBoxLayout, QMainWindow, QLineEdit, QHBoxLayout, QLabel
+from PyQt6.QtWidgets import QWidget, QApplication, QVBoxLayout, QMainWindow, QHBoxLayout
 
 from gui.widgets.button import Button
 from gui.widgets.input import Input
@@ -14,7 +14,6 @@ from gui.widgets.label import Label
 from gui.widgets.menubar import create_side_menu
 from helper.constants import EXAM, BTN_BACK, BTN_NEXT
 from helper.gui_helper import create_exam
-from helper.strings import sort_answers_for_exam
 
 
 class ExamWindow(QMainWindow):
@@ -33,7 +32,7 @@ class ExamWindow(QMainWindow):
 
         self.display_timer = QTimer()
         self.display_timer.timeout.connect(self.update_display)
-        self.display_timer.start(100)  # Aktualisiert alle 100 ms
+        self.display_timer.start(100)  # Update every 100 ms
 
         self.timer = QTimer()
         self.timer.setSingleShot(True)
@@ -73,10 +72,10 @@ class ExamWindow(QMainWindow):
         central_widget.setLayout(layout)
 
     def update_display(self):
-        restzeit = self.timer.remainingTime()
-        zeit = QTime(0, 0).addMSecs(restzeit)
-        zeit_string = zeit.toString("mm:ss")
-        self.label_time.setText(zeit_string)
+        rem_time = self.timer.remainingTime()
+        time = QTime(0, 0).addMSecs(rem_time)
+        string_time = time.toString("mm:ss")
+        self.label_time.setText(string_time)
 
     def backward(self):
         pass
