@@ -1,6 +1,6 @@
 """
 
-Grid-Layout für Window Main
+Layout for Window Main
 
 """
 # imports

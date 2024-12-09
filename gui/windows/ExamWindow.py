@@ -6,12 +6,16 @@ Window Exam with Timer and Scoring
 import sys
 
 from PyQt6.QtCore import QTimer, Qt, QTime
-from PyQt6.QtWidgets import QWidget, QApplication, QVBoxLayout, QMainWindow, QHBoxLayout
+from PyQt6.QtWidgets import QWidget, QApplication, QMainWindow
 
+from gui.layouts.exam_window import exam_layout
 from gui.widgets.button import Button
+from gui.widgets.evaluation import evaluation
 from gui.widgets.input import Input
 from gui.widgets.label import Label
 from gui.widgets.menubar import create_side_menu
+from gui.windows.AuditWindow import AuditWindow
+from gui.windows.ResultWindow import ResultWindow
 from helper.constants import EXAM, BTN_BACK, BTN_NEXT
 from helper.gui_helper import create_exam
 
@@ -19,6 +23,7 @@ from helper.gui_helper import create_exam
 class ExamWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.audit_results = None
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         self.setWindowTitle("Prüfungssimulation")
@@ -29,80 +34,23 @@ class ExamWindow(QMainWindow):
         self.index = 0
         self.menu = create_side_menu(self)
 
-        self.display_timer = QTimer()
-        self.display_timer.timeout.connect(self.update_display)
-        self.display_timer.start(100)  # Update every 100 ms
+        self.audit_window = AuditWindow(self)
+        self.change_central_widget(self.audit_window)
 
-        self.timer = QTimer()
-        self.timer.setSingleShot(True)
-        self.timer.start(3600000)
-        self.timer.timeout.connect(self.stop_exam)
-
-        self.label_time = Label(self)
-        self.label_time.setFixedSize(300, 100)
-        self.label_time.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.question = Label(self)
-        self.question.setText(self.exercises.loc[self.index, 'question'])
-
-        self.answer = Input()
-        self.answer.returnPressed.connect(self.set_answer)
-
-        self.btn_back = Button(self)
-        self.btn_back.setText(BTN_BACK)
-        self.btn_back.clicked.connect(self.backward)
-
-        self.btn_next = Button(self)
-        self.btn_next.setText(BTN_NEXT)
-        self.btn_next.clicked.connect(self.forward)
-
-        btn_layout = QHBoxLayout()
-        btn_layout.addWidget(self.btn_back)
-        btn_layout.addWidget(self.btn_next)
-
-        layout = QVBoxLayout()
-        layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-        layout.addWidget(self.label_time)
-        layout.addWidget(self.question)
-        layout.addWidget(self.answer)
-        layout.addLayout(btn_layout)
-
-        central_widget.setLayout(layout)
-
-    def update_display(self):
-        rem_time = self.timer.remainingTime()
-        time = QTime(0, 0).addMSecs(rem_time)
-        string_time = time.toString("mm:ss")
-        self.label_time.setText(string_time)
-
-    def update_question(self):
-        if not self.exercises.empty:
-            current_question = self.exercises.loc[self.index, 'question']
-            self.question.setText(current_question)
-
-    def backward(self):
-        self.set_answer()
-        if self.index > 0:
-            self.index -= 1
-            self.update_question()
-
-    def forward(self):
-        self.set_answer()
-        if self.index < len(self.exercises) - 1:
-            self.index += 1
-            self.update_question()
-
-    def set_answer(self):
-        if len(self.answer.text()) > 0:
-            self.exercises.loc[self.index, 'user_answer'] = self.answer.text()
+    def change_central_widget(self, new_widget):
+        current_widget = self.centralWidget()
+        if current_widget:
+            current_widget.setParent(None)
+        self.setCentralWidget(new_widget)
 
     def on_menu_item_clicked(self, item):
-        self.set_answer()
+        self.audit_window.set_answer()
         self.index = self.menu_list.row(item)
-        self.update_question()
+        self.audit_window.update_question()
 
-    def stop_exam(self):
-        pass
+    # def stop_exam(self):
+    #     self.audit_results = evaluation(self.exercises)
+    #     self.setCentralWidget(self.audit_results)
 
 
 def main():

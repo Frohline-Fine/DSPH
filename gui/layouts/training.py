@@ -1,6 +1,6 @@
 """
 
-Grid-Layout for Window Training
+Layout for Window Training
 
 """
 # imports

@@ -1,6 +1,6 @@
 """
 
-Grid-Layout for Window Training with translation
+Layout for Window Training with translation
 
 """
 # imports

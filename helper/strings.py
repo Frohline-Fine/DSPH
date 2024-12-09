@@ -84,5 +84,4 @@ def sort_answers_for_exam(element):
     elif re.findall(WRONG, element):
         answer = WRONG
 
-    print(answer)
     return answer
