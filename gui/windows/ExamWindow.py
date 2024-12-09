@@ -26,9 +26,8 @@ class ExamWindow(QMainWindow):
         self.setStyleSheet(f"background-color: rgb({EXAM}); margin: 20px;")
 
         self.exercises = create_exam()
+        self.index = 0
         self.dock = create_side_menu(self)
-
-        self.score = 0
 
         self.display_timer = QTimer()
         self.display_timer.timeout.connect(self.update_display)
@@ -44,10 +43,10 @@ class ExamWindow(QMainWindow):
         self.label_time.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.question = Label(self)
-        self.question.setText(self.exercises.loc[0, 'question'])
+        self.question.setText(self.exercises.loc[self.index, 'question'])
 
         self.answer = Input()
-        self.answer.setText(self.exercises.loc[0, 'correct_answer'])
+        self.answer.setText(self.exercises.loc[self.index, 'correct_answer'])
         self.answer.returnPressed.connect(self.set_answer)
 
         self.btn_back = Button(self)
@@ -77,11 +76,20 @@ class ExamWindow(QMainWindow):
         string_time = time.toString("mm:ss")
         self.label_time.setText(string_time)
 
+    def update_question(self):
+        if not self.exercises.empty:
+            current_question = self.exercises.loc[self.index, 'question']
+            self.question.setText(current_question)
+
     def backward(self):
-        pass
+        if self.index > 0:
+            self.index -= 1
+            self.update_question()
 
     def forward(self):
-        pass
+        if self.index < len(self.exercises) - 1:
+            self.index += 1
+            self.update_question()
 
     def set_answer(self):
         pass
