@@ -7,16 +7,16 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QHBoxLayout, QVBoxLayout
 
 
-def exam_layout(self=None):
-    btn_layout = QHBoxLayout()
-    btn_layout.addWidget(self.btn_back)
-    btn_layout.addWidget(self.btn_next)
+def exam_layout(window):
+    window.btn_layout = QHBoxLayout()
+    window.btn_layout.addWidget(window.btn_back)
+    window.btn_layout.addWidget(window.btn_next)
 
-    layout = QVBoxLayout()
-    layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-    layout.addWidget(self.label_time)
-    layout.addWidget(self.question)
-    layout.addWidget(self.answer)
-    layout.addLayout(btn_layout)
+    window.layout = QVBoxLayout()
+    window.layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+    window.layout.addWidget(window.label_time)
+    window.layout.addWidget(window.question)
+    window.layout.addWidget(window.answer)
+    window.layout.addLayout(window.btn_layout)
 
-    return layout
+    return window.layout

@@ -6,7 +6,7 @@ Window Exam with Timer and Scoring
 import sys
 
 from PyQt6.QtCore import QTimer, Qt, QTime
-from PyQt6.QtWidgets import QWidget, QApplication, QVBoxLayout, QMainWindow, QHBoxLayout
+from PyQt6.QtWidgets import QWidget, QApplication, QMainWindow
 
 from gui.layouts.exam_window import exam_layout
 from gui.widgets.button import Button
@@ -58,7 +58,7 @@ class ExamWindow(QMainWindow):
         self.btn_next.setText(BTN_NEXT)
         self.btn_next.clicked.connect(self.forward)
 
-        layout = exam_layout()
+        layout = exam_layout(self)
         central_widget.setLayout(layout)
 
     def update_display(self):
