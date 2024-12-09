@@ -38,4 +38,4 @@ def create_side_menu(self):
     # add QDockWidget to exam window
     self.addDockWidget(Qt.DockWidgetArea.LeftDockWidgetArea, self.dock)
 
-    return self.dock
+    # return self.dock

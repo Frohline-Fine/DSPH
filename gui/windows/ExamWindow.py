@@ -27,7 +27,7 @@ class ExamWindow(QMainWindow):
 
         self.exercises = create_exam()
         self.index = 0
-        self.dock = create_side_menu(self)
+        self.menu = create_side_menu(self)
 
         self.display_timer = QTimer()
         self.display_timer.timeout.connect(self.update_display)
@@ -46,7 +46,6 @@ class ExamWindow(QMainWindow):
         self.question.setText(self.exercises.loc[self.index, 'question'])
 
         self.answer = Input()
-        self.answer.setText(self.exercises.loc[self.index, 'correct_answer'])
         self.answer.returnPressed.connect(self.set_answer)
 
         self.btn_back = Button(self)
