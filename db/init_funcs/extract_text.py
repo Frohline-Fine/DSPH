@@ -22,7 +22,7 @@ def extract(path_to_pdf: Path) -> pd.DataFrame:
     # Join the non-empty lines back together with newline characters
     cleaned_text = '<br>\n'.join(lines)
 
-    # Transfer cleaned_text into Dataframe and csv
+    # Transfer cleaned_text into Dataframe
     tlist = []
     for line in cleaned_text.splitlines():
         tlist.append(line)

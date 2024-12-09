@@ -1,6 +1,9 @@
 """
+
 Constants library
+
 """
+
 """ DB """
 
 # DB
@@ -11,19 +14,19 @@ TABLE = 'exercises'
 
 # RGB
 MAIN = '143,188,143'
+EXAM = '143,188,143'
 TRAINING = '143,188,143'
 LABEL = '245,255,250'
 BUTTON_BG = '245,255,250'
 
-# MainWindow
+# Buttons
 BTN_TRAINING = 'Übungsmodus'
 BTN_TRAINING_E = 'Trainingsmode'
 BTN_EXAM = 'Prüfungssimulation'
 BTN_EXIT = 'Exit'
-
-# TrainingWindow
 BTN_ANSWER = 'Lösung'
 BTN_NEXT = 'Weiter'
+BTN_BACK = 'Zurück'
 
 """ DB Init """
 

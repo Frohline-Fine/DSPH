@@ -1,5 +1,7 @@
 """
+
 Window Training: Solve random questions - no strings attached
+
 """
 # imports
 from PyQt6.QtWidgets import QWidget

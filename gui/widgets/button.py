@@ -1,3 +1,9 @@
+"""
+
+Buttons for GUI
+
+"""
+# imports
 from PyQt6.QtCore import QSize
 from PyQt6.QtWidgets import QPushButton
 
@@ -13,5 +19,6 @@ class Button(QPushButton):
         padding: 10px;
         margin: 20px;
         border: 2px solid black;
+        border-radius: 8px;
         font-family: Arial; font-size: 14px; font-weight: bold;
         """)

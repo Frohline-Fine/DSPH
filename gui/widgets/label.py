@@ -1,3 +1,9 @@
+"""
+
+Labels for GUI
+
+"""
+# imports
 from PyQt6.QtWidgets import QLabel
 
 from helper.constants import LABEL
@@ -12,6 +18,7 @@ class Label(QLabel):
         padding: 20px;
         margin: 20px;
         border: 2px solid black;
+        border-radius: 8px;
         font-family: Arial; font-size: 16px;
         """)
         self.setWordWrap(True)

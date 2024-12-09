@@ -1,5 +1,7 @@
 """
+
 Helper functions for String objects
+
 """
 import re
 
@@ -66,22 +68,21 @@ def sort_by_separator(str_element):
 def sort_answers_for_exam(element):
     answer = []
     if re.findall(CORRECT, element):
-        answer = element.strip(CORRECT).strip('<br>')
-        print(answer)
+        answer = element[18]
     elif re.findall(R_ANSWERS, element):
-        answer = element.strip(R_ANSWERS).strip('<br>')
-        print(answer)
+        answer = element.strip(R_ANSWERS)[slice(-4)]
+        if re.findall('Option', answer):
+            answer = answer[7:]
     elif re.findall(R_ANSWER, element):
-        answer = element.strip(R_ANSWER).strip('<br>')
-        print(answer)
+        answer = element.strip(R_ANSWER)[slice(-4)]
+        if re.findall('Option', answer):
+            answer = answer[7:]
     elif re.findall(SOLUTION, element):
         answer = element[8]
-        print(answer)
     elif re.findall(RIGHT, element):
         answer = RIGHT
-        print(answer)
     elif re.findall(WRONG, element):
         answer = WRONG
-        print(answer)
 
+    print(answer)
     return answer

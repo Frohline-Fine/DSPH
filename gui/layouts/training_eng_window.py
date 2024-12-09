@@ -1,5 +1,7 @@
 """
+
 Grid-Layout for Window Training with translation
+
 """
 # imports
 from PyQt6.QtCore import Qt

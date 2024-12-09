@@ -13,7 +13,6 @@ from db.init_funcs.clean_exercise import clean_exercise
 def divide(df_in: pd.DataFrame) -> pd.DataFrame:
     exercises = []
     i = 0
-    print(df_in)
     for element in df_in['Exercise']:
         name = f"Übung {i + 1}"
 
@@ -21,7 +20,6 @@ def divide(df_in: pd.DataFrame) -> pd.DataFrame:
         str_element1 = replace_chars(str_element)
 
         problem = sort_by_separator(str_element1)
-
         cleaned_problem = clean_exercise(problem)
 
         if len(problem) > 0:
