@@ -11,10 +11,10 @@ from helper.constants import LABEL
 
 def create_side_menu(self):
     # create QDockWidget
-    dock = QDockWidget("Menü", self)
-    dock.setAllowedAreas(Qt.DockWidgetArea.LeftDockWidgetArea)
-    dock.setTitleBarWidget(QWidget())
-    dock.setStyleSheet(f"""
+    self.dock = QDockWidget("Menü", self)
+    self.dock.setAllowedAreas(Qt.DockWidgetArea.LeftDockWidgetArea)
+    self.dock.setTitleBarWidget(QWidget())
+    self.dock.setStyleSheet(f"""
             background-color: rgb(245,255,250);
             margin: 20px;
             padding: 10px;
@@ -24,18 +24,18 @@ def create_side_menu(self):
             """)
 
     # create QListWidget for menu items
-    menu_list = QListWidget()
+    self.menu_list = QListWidget()
     for index, row in self.exercises.iterrows():
         qu = QListWidgetItem(str(row['question']))
-        menu_list.addItem(qu)
+        self.menu_list.addItem(qu)
 
-    menu_list.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-    menu_list.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-    menu_list.itemClicked.connect(self.on_menu_item_clicked)
+    self.menu_list.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+    self.menu_list.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+    self.menu_list.itemClicked.connect(self.on_menu_item_clicked)
 
-    dock.setWidget(menu_list)
+    self.dock.setWidget(self.menu_list)
 
     # add QDockWidget to exam window
-    self.addDockWidget(Qt.DockWidgetArea.LeftDockWidgetArea, dock)
+    self.addDockWidget(Qt.DockWidgetArea.LeftDockWidgetArea, self.dock)
 
-    return dock
+    return self.dock

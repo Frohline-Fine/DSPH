@@ -82,22 +82,27 @@ class ExamWindow(QMainWindow):
             self.question.setText(current_question)
 
     def backward(self):
+        self.set_answer()
         if self.index > 0:
             self.index -= 1
             self.update_question()
 
     def forward(self):
+        self.set_answer()
         if self.index < len(self.exercises) - 1:
             self.index += 1
             self.update_question()
 
     def set_answer(self):
-        pass
-
-    def stop_exam(self):
-        pass
+        if len(self.answer.text()) > 0:
+            self.exercises.loc[self.index, 'user_answer'] = self.answer.text()
 
     def on_menu_item_clicked(self, item):
+        self.set_answer()
+        self.index = self.menu_list.row(item)
+        self.update_question()
+
+    def stop_exam(self):
         pass
 
 
