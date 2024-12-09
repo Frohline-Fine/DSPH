@@ -8,6 +8,7 @@ import sys
 from PyQt6.QtCore import QTimer, Qt, QTime
 from PyQt6.QtWidgets import QWidget, QApplication, QVBoxLayout, QMainWindow, QHBoxLayout
 
+from gui.layouts.exam_window import exam_layout
 from gui.widgets.button import Button
 from gui.widgets.input import Input
 from gui.widgets.label import Label
@@ -57,17 +58,7 @@ class ExamWindow(QMainWindow):
         self.btn_next.setText(BTN_NEXT)
         self.btn_next.clicked.connect(self.forward)
 
-        btn_layout = QHBoxLayout()
-        btn_layout.addWidget(self.btn_back)
-        btn_layout.addWidget(self.btn_next)
-
-        layout = QVBoxLayout()
-        layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-        layout.addWidget(self.label_time)
-        layout.addWidget(self.question)
-        layout.addWidget(self.answer)
-        layout.addLayout(btn_layout)
-
+        layout = exam_layout()
         central_widget.setLayout(layout)
 
     def update_display(self):
