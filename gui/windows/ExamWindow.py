@@ -13,7 +13,7 @@ from gui.widgets.button import Button
 from gui.widgets.input import Input
 from gui.widgets.label import Label
 from gui.widgets.menubar import create_side_menu
-from gui.windows import ResultWindow
+from gui.windows.ResultWindow import ResultWindow
 from helper.constants import EXAM, BTN_BACK, BTN_NEXT
 from helper.gui_helper import create_exam
 
@@ -49,6 +49,10 @@ class ExamWindow(QMainWindow):
 
         self.answer = Input()
         self.answer.returnPressed.connect(self.set_answer)
+
+        self.btn_stop = Button(self)
+        self.btn_stop.setText("Prüfung beenden")
+        self.btn_stop.clicked.connect(self.stop_exam)
 
         self.btn_back = Button(self)
         self.btn_back.setText(BTN_BACK)
@@ -96,7 +100,7 @@ class ExamWindow(QMainWindow):
     def stop_exam(self):
         self.result_window = ResultWindow()
         self.result_window.set_dataframe(self.exercises)
-        self.result_window.show()
+        self.setCentralWidget(self.result_window)
 
 
 def main():
