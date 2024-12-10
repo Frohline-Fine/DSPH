@@ -3,9 +3,10 @@
 Window Result to show evaluation from exam
 
 """
-# imports
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QTableWidget, QTableWidgetItem, QLabel, QHBoxLayout
+from PyQt6.QtWidgets import QWidget, QTableWidgetItem, QLabel
 
+from gui.widgets.evaluation import audit_result_layout
+from gui.widgets.table import Table
 from helper.evaluation_helper import evaluation
 
 
@@ -14,7 +15,7 @@ class ResultWindow(QWidget):
         super().__init__()
         self.window = window
 
-        self.table = QTableWidget()
+        self.table = Table()
         self.table.setRowCount(len(self.window.exercises))
         self.table.setColumnCount(len(self.window.exercises.columns))
 
@@ -32,11 +33,5 @@ class ResultWindow(QWidget):
         self.accuracy = QLabel(self)
         self.accuracy.setText(f"Genauigkeit: {self.correct[1]}%")
 
-        h_layout = QHBoxLayout()
-        h_layout.addWidget(self.correct_count)
-        h_layout.addWidget(self.accuracy)
-
-        layout = QVBoxLayout()
-        layout.addWidget(self.table)
-        layout.addLayout(h_layout)
+        layout = audit_result_layout(self)
         self.setLayout(layout)
