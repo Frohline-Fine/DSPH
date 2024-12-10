@@ -8,7 +8,7 @@ import sys
 
 from PyQt6.QtWidgets import QApplication
 
-from gui.windows.MainWindow import MainWindow
+from gui.windows.MainMenuWindow import MainWindow
 
 
 def main_gui():

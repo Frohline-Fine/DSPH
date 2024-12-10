@@ -9,7 +9,7 @@ from PyQt6.QtWidgets import QMainWindow, QWidget
 
 from gui.layouts.main_window import main_layout
 from gui.widgets.button import Button
-from gui.windows.TrainingEngWindow import TrainingEngWindow
+from gui.windows.TrainingTranslatedWindow import TrainingEngWindow
 from gui.windows.TrainingWindow import TrainingWindow
 from helper.constants import MAIN, BTN_TRAINING, BTN_EXAM, BTN_TRAINING_E, BTN_EXIT
 
