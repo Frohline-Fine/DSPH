@@ -3,6 +3,7 @@
 Translate text into english
 
 """
+
 import time
 from googletrans import Translator
 

@@ -3,6 +3,7 @@
 Menubar for Exam mode
 
 """
+
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QDockWidget, QListWidget, QWidget, QMenuBar, QListWidgetItem
 

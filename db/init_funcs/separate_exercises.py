@@ -3,7 +3,7 @@
 This Class separates the exercises and gets rid of unimportant text
 
 """
-# imports
+
 import pandas as pd
 
 

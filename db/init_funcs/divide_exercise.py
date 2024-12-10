@@ -3,7 +3,7 @@
 This class divides the exercises into individual parts
 
 """
-# imports
+
 import pandas as pd
 from helper.strings import replace_chars, sort_by_separator
 from db.init_funcs.clean_exercise import clean_exercise

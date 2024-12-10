@@ -1,3 +1,9 @@
+"""
+
+User input for audit window
+
+"""
+
 from PyQt6.QtWidgets import QLineEdit
 
 

@@ -3,7 +3,7 @@
 Path library
 
 """
-# imports
+
 from pathlib import Path
 
 from helper.constants import DB_NAME

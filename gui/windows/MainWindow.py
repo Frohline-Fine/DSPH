@@ -4,10 +4,8 @@ Window Main
 
 """
 
-import sys
-
 from PyQt6.QtCore import QSize
-from PyQt6.QtWidgets import QMainWindow, QApplication, QWidget
+from PyQt6.QtWidgets import QMainWindow, QWidget
 
 from gui.layouts.main_window import main_layout
 from gui.widgets.button import Button

@@ -3,6 +3,7 @@
 Layout for audit results
 
 """
+
 from PyQt6.QtWidgets import QHBoxLayout, QVBoxLayout
 
 
