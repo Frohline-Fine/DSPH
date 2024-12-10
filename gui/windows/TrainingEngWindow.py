@@ -3,7 +3,7 @@
 Window Training with translation: Solve random questions - no strings attached
 
 """
-# imports
+
 from PyQt6.QtWidgets import QWidget
 
 from gui.layouts.training_eng_window import training_eng_layout

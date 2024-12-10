@@ -3,6 +3,7 @@
 Window Exam with Timer and Scoring
 
 """
+
 import sys
 
 from PyQt6.QtWidgets import QWidget, QApplication, QMainWindow

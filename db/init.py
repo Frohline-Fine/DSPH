@@ -3,7 +3,7 @@
 This Class creates and fills SQLite
 
 """
-# imports
+
 import sqlite3
 
 from db.init_funcs.divide_exercise import divide

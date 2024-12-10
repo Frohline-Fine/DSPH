@@ -3,6 +3,7 @@
 Window Audit for exam
 
 """
+
 from PyQt6.QtCore import QTimer, Qt, QTime
 from PyQt6.QtWidgets import QWidget
 
@@ -79,7 +80,7 @@ class AuditWindow(QWidget):
             self.window.exercises.loc[self.window.index, 'user_answer'] = self.answer.text()
 
     def stop_exam(self):
-        pass
-    #     self.window.audit_results = evaluation(self.window.exercises)
-    #     self.window.setCentralWidget(self.audit_results)
-
+        try:
+            self.window.stop_exam()
+        except Exception as e:
+            print(e)

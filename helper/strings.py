@@ -3,6 +3,7 @@
 Helper functions for String objects
 
 """
+
 import re
 
 from helper.constants import CORRECT, R_ANSWERS, R_ANSWER, SOLUTION, RIGHT, WRONG

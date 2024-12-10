@@ -4,7 +4,7 @@ todo: deprecated  (to be deleted?)
 This class extracts text from source file and transfers it to csv file
 
 """
-# imports
+
 import pandas as pd
 from pdfminer.high_level import extract_pages, extract_text
 from pdfminer.layout import LTTextContainer

@@ -4,8 +4,7 @@ This class extracts text from pdf and transfers to dataframe
 without unnecessary blank lines
 
 """
-# -*- coding: utf-8 -*-
-# Import extract_text function from the pdfminer.six library
+
 import pandas as pd
 from pathlib import Path
 from pdfminer.high_level import extract_text

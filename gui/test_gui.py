@@ -1,18 +1,14 @@
 import sys
 
+from PyQt6.QtCore import QSize
 from PyQt6.QtGui import QFont
+from PyQt6.QtWidgets import (
+    QDialog,
+    QApplication, QLabel, QPushButton, QGridLayout, )
 
 from db.init import cursor
 from db.init_funcs.clean_exercise import clean_exercise
 from helper.constants import TABLE
-from helper.strings import sort_answers_for_exam
-from helper.translator import translate
-from helper.gui_helper import random_exercise
-
-from PyQt6.QtCore import QSize
-from PyQt6.QtWidgets import (
-    QDialog,
-    QApplication, QLabel, QPushButton, QGridLayout, )
 
 
 def not_random_exercise():

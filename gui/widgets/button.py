@@ -3,7 +3,7 @@
 Buttons for GUI
 
 """
-# imports
+
 from PyQt6.QtCore import QSize
 from PyQt6.QtWidgets import QPushButton
 

@@ -3,7 +3,7 @@
 Helper functions for GUI
 
 """
-# imports
+
 import random
 
 import pandas as pd
