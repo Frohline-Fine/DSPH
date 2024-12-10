@@ -5,18 +5,12 @@ Window Exam with Timer and Scoring
 """
 import sys
 
-from PyQt6.QtCore import QTimer, Qt, QTime
 from PyQt6.QtWidgets import QWidget, QApplication, QMainWindow
 
-from gui.layouts.exam_window import exam_layout
-from gui.widgets.button import Button
-from gui.widgets.evaluation import evaluation
-from gui.widgets.input import Input
-from gui.widgets.label import Label
 from gui.widgets.menubar import create_side_menu
 from gui.windows.AuditWindow import AuditWindow
 from gui.windows.ResultWindow import ResultWindow
-from helper.constants import EXAM, BTN_BACK, BTN_NEXT
+from helper.constants import EXAM
 from helper.gui_helper import create_exam
 
 
@@ -48,9 +42,9 @@ class ExamWindow(QMainWindow):
         self.index = self.menu_list.row(item)
         self.audit_window.update_question()
 
-    # def stop_exam(self):
-    #     self.audit_results = evaluation(self.exercises)
-    #     self.setCentralWidget(self.audit_results)
+    def stop_exam(self):
+        self.audit_results = ResultWindow(self)
+        self.change_central_widget(self.audit_results)
 
 
 def main():
