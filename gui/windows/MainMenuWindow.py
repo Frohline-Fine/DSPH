@@ -9,6 +9,7 @@ from PyQt6.QtWidgets import QMainWindow, QWidget
 
 from gui.layouts.main_window import main_layout
 from gui.widgets.button import Button
+from gui.windows.ExamMainWindow import ExamWindow
 from gui.windows.TrainingTranslatedWindow import TrainingEngWindow
 from gui.windows.TrainingWindow import TrainingWindow
 from helper.constants import MAIN, BTN_TRAINING, BTN_EXAM, BTN_TRAINING_E, BTN_EXIT
@@ -51,8 +52,12 @@ class MainWindow(QMainWindow):
         self.training_window.show()
 
     def open_training_english(self):
-        self.training_eng_window = TrainingEngWindow()
-        self.training_eng_window.show()
+        try:
+            self.training_eng_window = TrainingEngWindow()
+            self.training_eng_window.show()
+        except Exception as e:
+            print(e)
 
     def open_exam(self):
-        pass
+        self.exam_window = ExamWindow()
+        self.exam_window.show()
