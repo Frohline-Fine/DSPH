@@ -6,7 +6,7 @@ This class divides the exercises into individual parts
 
 import pandas as pd
 from helper.strings import replace_chars, sort_by_separator
-from db.init_funcs.clean_exercise import clean_exercise
+from helper.clean_exercise import clean_exercise
 
 
 # split exercises into parts and update dataframe
