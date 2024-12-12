@@ -9,8 +9,8 @@ import sys
 from PyQt6.QtWidgets import QWidget, QApplication, QMainWindow
 
 from gui.widgets.menubar import create_side_menu
-from gui.windows.AuditWindow import AuditWindow
-from gui.windows.ResultWindow import ResultWindow
+from gui.windows.ExamAuditWindow import AuditWindow
+from gui.windows.ExamResultWindow import ResultWindow
 from helper.constants import EXAM
 from helper.gui_helper import create_exam
 

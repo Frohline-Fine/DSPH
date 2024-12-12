@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (
     QApplication, QLabel, QPushButton, QGridLayout, )
 
 from db.init import cursor
-from db.init_funcs.clean_exercise import clean_exercise
+from helper.clean_exercise import clean_exercise
 from helper.constants import TABLE
 
 
