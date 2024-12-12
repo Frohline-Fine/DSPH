@@ -14,11 +14,11 @@ class Label(QLabel):
         super().__init__(parent)
         self.setFixedSize(760, 450)
         self.setStyleSheet(f"""
-        color: black; background-color: rgb({LABEL});
-        padding: 20px;
-        margin: 20px;
-        border: 2px solid black;
-        border-radius: 8px;
-        font-family: Arial; font-size: 16px;
+            color: black; background-color: rgb({LABEL});
+            padding: 20px;
+            margin: 20px;
+            border: 2px solid black;
+            border-radius: 8px;
+            font-family: Arial; font-size: 16px;
         """)
         self.setWordWrap(True)
