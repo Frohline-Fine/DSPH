@@ -23,7 +23,7 @@ class ExamWindow(QMainWindow):
         self.setCentralWidget(central_widget)
         self.setWindowTitle("Prüfungssimulation")
         self.setFixedSize(1000, 900)
-        self.setStyleSheet(f"background-color: rgb({EXAM}); margin: 20px;")
+        self.setStyleSheet(f"background-color: {EXAM}; margin: 20px;")
 
         self.exercises = create_exam()
         self.index = 0

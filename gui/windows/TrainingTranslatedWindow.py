@@ -19,7 +19,7 @@ class TrainingEngWindow(QWidget):
         super().__init__()
         self.setWindowTitle("Training (english)")
         self.setFixedSize(1550, 950)
-        self.setStyleSheet(f"background-color: rgb({TRAINING}); margin: 20px;")
+        self.setStyleSheet(f"background-color: {TRAINING}; margin: 20px;")
         self.exercise = random_exercise()
 
         self.explanation = Label(self)
