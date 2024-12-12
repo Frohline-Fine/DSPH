@@ -12,13 +12,17 @@ TABLE = 'exercises'
 
 """ GUI """
 
-# RGB
-MAIN = '143,188,143'
-EXAM = '143,188,143'
-TRAINING = '143,188,143'
-TABLE_WIDGET = '245,255,250'
-LABEL = '245,255,250'
-BUTTON_BG = '245,255,250'
+# Fonts
+FONT_BTN = 'Courier'
+FONT_LABEL = 'Courier'
+
+# Background colors
+MAIN = '#8FBC8F'
+EXAM = '#8FBC8F'
+TRAINING = '#8FBC8F'
+TABLE_WIDGET = '#F5FFFA'
+LABEL = '#F5FFFA'
+BUTTON_BG = '#F5FFFA'
 
 # Buttons
 BTN_TRAINING = 'Übungsmodus'
@@ -28,6 +32,7 @@ BTN_EXIT = 'Exit'
 BTN_ANSWER = 'Lösung'
 BTN_NEXT = 'Weiter'
 BTN_BACK = 'Zurück'
+BTN_STOP = 'Prüfung beenden'
 
 """ DB Init """
 

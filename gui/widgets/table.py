@@ -7,19 +7,19 @@ Table for exam results
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QTableWidget
 
-from helper.constants import TABLE_WIDGET
+from helper.constants import TABLE_WIDGET, FONT_LABEL
 
 
 class Table(QTableWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setStyleSheet(f"""
-            background-color: rgb({TABLE_WIDGET});
+            background-color: {TABLE_WIDGET};
             margin: 20px;
             padding: 10px;
             border: 2px solid black;
             border-radius: 8px;
-            font-family: Arial; font-size: 14px;   
+            font-family: {FONT_LABEL}; font-size: 14px;   
         """)
         self.column_percentages = 70, 15, 15
         self.horizontalHeader().setVisible(False)

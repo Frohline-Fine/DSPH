@@ -20,7 +20,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Hauptmenü")
         self.setFixedSize(600, 600)
-        self.setStyleSheet(f"background-color: rgb({MAIN});")
+        self.setStyleSheet(f"background-color: {MAIN};")
 
         # Create buttons
         self.btn_training = Button(BTN_TRAINING)

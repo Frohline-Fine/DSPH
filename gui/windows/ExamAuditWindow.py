@@ -11,7 +11,7 @@ from gui.layouts.exam_window import exam_layout
 from gui.widgets.button import Button
 from gui.widgets.input import Input
 from gui.widgets.label import Label
-from helper.constants import BTN_BACK, BTN_NEXT
+from helper.constants import BTN_BACK, BTN_NEXT, BTN_STOP
 
 
 class AuditWindow(QWidget):
@@ -38,7 +38,7 @@ class AuditWindow(QWidget):
         self.answer.returnPressed.connect(self.set_answer)
 
         self.btn_stop = Button(self)
-        self.btn_stop.setText("Prüfung beenden")
+        self.btn_stop.setText(BTN_STOP)
         self.btn_stop.clicked.connect(self.stop_exam)
 
         self.btn_back = Button(self)
