@@ -16,7 +16,7 @@ TABLE = 'exercises'
 FONT_BTN = 'Courier'
 FONT_LABEL = 'Courier'
 
-# RGB
+# Background colors
 MAIN = '#8FBC8F'
 EXAM = '#8FBC8F'
 TRAINING = '#8FBC8F'
