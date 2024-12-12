@@ -1,5 +1,5 @@
-/db/data/
-/db/source/
+db/data/datei.pdf
+db/data/pruefungshelfer.sqlite
 /db/__pycache__/
 /db/init_funcs/__pycache__/
 /gui/__pycache__/

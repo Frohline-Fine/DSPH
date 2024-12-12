@@ -1,5 +1,5 @@
 """
-todo: deprecated (to be deleted?)
+todo: deprecated (to be deleted?) [.split() not working properly]
 
 This class separates the problem from options
 
