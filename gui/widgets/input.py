@@ -14,12 +14,12 @@ class Input(QLineEdit):
         self.setMaxLength(10)
         self.setStyleSheet("""
             QLineEdit {
-                background-color: rgb(245,255,250);
+                background-color: #F5FFFA;
                 color: black;
                 border: 2px solid black;
                 border-radius: 8px;
                 padding: 20px;
-                font-family: Arial; 
+                font-family: Courier; 
                 font-size: 16px;
             }
             QLineEdit:focus {

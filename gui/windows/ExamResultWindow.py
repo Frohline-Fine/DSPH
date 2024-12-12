@@ -6,7 +6,7 @@ Window Result to show evaluation from exam
 
 from PyQt6.QtWidgets import QWidget, QTableWidgetItem, QLabel
 
-from gui.widgets.evaluation import audit_result_layout
+from gui.layouts.evaluation import audit_result_layout
 from gui.widgets.table import Table
 from helper.evaluation_helper import evaluation
 
